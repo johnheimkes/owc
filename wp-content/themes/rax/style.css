@@ -3,7 +3,7 @@ Theme Name: Raxacoricofallapatorius
 Theme URI: http://www.github.com/johnheimkes/owc/
 */
 
-/*Bauhaus Font-Face Declarations*/
+/*Bauhaus @font-face Declarations*/
 @font-face {
     font-family: 'BauhausRegular';
     src: url('assets/fonts/bauhaus-bold-webfont.eot');
@@ -11,7 +11,7 @@ Theme URI: http://www.github.com/johnheimkes/owc/
          url('assets/fonts/bauhaus-bold-webfont.woff') format('woff'),
          url('assets/fonts/bauhaus-bold-webfont.ttf') format('truetype'),
          url('assets/fonts/bauhaus-bold-webfont.svg#BauhausRegular') format('svg');
-    font-weight: normal;
+    font-weight: 800;
     font-style: normal;
 
 }
@@ -23,7 +23,7 @@ Theme URI: http://www.github.com/johnheimkes/owc/
          url('assets/fonts/bauhaus-demi-webfont.woff') format('woff'),
          url('assets/fonts/bauhaus-demi-webfont.ttf') format('truetype'),
          url('assets/fonts/bauhaus-demi-webfont.svg#BauhausRegular') format('svg');
-    font-weight: normal;
+    font-weight: 500;
     font-style: normal;
 
 }
@@ -35,9 +35,13 @@ Theme URI: http://www.github.com/johnheimkes/owc/
          url('assets/fonts/bauhaus-medium-webfont.woff') format('woff'),
          url('assets/fonts/bauhaus-medium-webfont.ttf') format('truetype'),
          url('assets/fonts/bauhaus-medium-webfont.svg#BauhausRegular') format('svg');
-    font-weight: normal;
+    font-weight: 300;
     font-style: normal;
 
 }
 
 
+#site-header {
+    font-family: BauhausRegular;
+    font-weight: 300;
+}
