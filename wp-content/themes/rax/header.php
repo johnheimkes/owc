@@ -12,6 +12,7 @@
         var assetsURL = '<?php echo ASSETS_DIR; ?>';
     </script>
     <?php wp_head(); ?>
+    <script type="text/javascript" src="<?php echo site_url(); ?>/wp-content/themes/rax/assets/scripts/respond.js"></script>
 </head>
 <body>
 <div id="main-wrapper">
