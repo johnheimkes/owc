@@ -18,6 +18,17 @@
 <div id="main-wrapper">
     <section id="header-wrapper">
         <header id="site-header">
+            <h1 class="logo">The Windmill Project</h1>
+            <div class="supplemental">
+                <ul class="promo">
+                    <li>Connecting Families</li>
+                    <li>Sharing Strengths</li>
+                    <li>Renewing Hope</li>
+                </ul>
+                
+                <a class="button donate" href="#">Donate Now</a>
+            </div>
+            
             <?php wp_nav_menu( array('menu' => 'Header-Main' )); ?>
         </header>
     </section>
