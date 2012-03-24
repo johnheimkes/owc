@@ -43,12 +43,7 @@ class Site
     public function enqueueStyles()
     {
         if (!is_admin()) {
-            // Register stylesheets
-            /*
-             * Example:
-             * wp_enqueue_style('header', ASSETS_DIR . 'styles/header.css');
-             *
-             */
+            wp_enqueue_style('style', get_template_directory_uri() . '/style.css');
         }
     }
 
