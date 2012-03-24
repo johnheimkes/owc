@@ -6,7 +6,7 @@
             <?php the_post_thumbnail(); ?>
         <?php endif; ?>
     <div class="entrytext">
-      <?php the_content('<p class="serif">Read the rest of this page &raquo;</p>'); ?>
+      <?php the_excerpt('<p class="serif">Read the rest of this page &raquo;</p>'); ?>
     </div>
 </div>
 <?php endwhile; endif; ?>
