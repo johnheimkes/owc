@@ -115,7 +115,20 @@ html {
          url('assets/fonts/bauhaus-medium-webfont.svg#BauhausRegular') format('svg');
     font-weight: normal;
     font-style: normal;
+}
 
+
+/* Clearfix */
+.group:before,
+.group:after {
+    content:"";
+    display:table;
+}
+.group:after {
+    clear:both;
+}
+.group {
+    zoom:1; /* For IE 6/7 (trigger hasLayout) */
 }
 
 /*******************************
@@ -127,7 +140,30 @@ body {
 }
 
 #main-wrapper {
-    
+    padding-top: 40px;
+}
+
+/* HEADER */
+.logo {
+    background: url(assets/images/logo-windmill-project.png) no-repeat;
+    width: 309px;
+    height: 115px;
+    text-indent: -9999px;
+}
+
+.menu {
+    overflow: hidden;
+}
+
+.menu .menu-item {
+    width: 90px;
+    float: left;
+    text-align: center;
+}
+
+/* PAGE CONTENT */
+#page-content {
+    clear: both;
 }
 
 /*******************************
