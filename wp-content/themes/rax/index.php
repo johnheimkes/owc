@@ -1,12 +1,13 @@
 <?php get_header(); ?>
 
-<?php $my_query = new WP_Query('post_type=page'); ?>
-
-<?php while ($my_query->have_posts()) : $my_query->the_post();
-	
-		the_title();
-		the_content();
-
-endwhile; ?>
+<?php if (have_posts()) : while (have_posts()) : the_post();?>
+ <div class="post">
+  <h2 id="post-<?php the_ID(); ?>"><?php the_title();?></h2>
+  <div class="entrytext">
+   <?php the_content(); ?>
+  </div>
+ </div>
+ <?php endwhile; endif; ?>
+ <?php edit_post_link('Edit this entry.', '<p>', '</p>'); ?>
 
 <?php get_footer(); ?>
