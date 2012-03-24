@@ -9,7 +9,12 @@ function create_homepage_sliders() {
 		array(
 			'labels' => array(
 				'name' => __( 'Homepage Slides' ),
-				'singular_name' => __( 'Homepage Slide' )
+				'singular_name' => __( 'Homepage Slide' ),
+				'add_new' => __( 'Add New' ),
+				'add_new_item' => __( 'Add New Homepage Slide' ),
+				'edit' => __( 'Edit' ),
+                'edit_item' => __( 'Edit Homepage Slide' ),
+                'new_item' => __( 'New Homepage Slide' ),
 			),
 			'public' => true,
 			'supports' => array(
