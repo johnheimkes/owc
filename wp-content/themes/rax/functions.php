@@ -122,24 +122,24 @@ function theme_front_page_settings() {
             <form method="POST" action="">
                 <fieldset>
                     <input type="hidden" name="update_settings" value="Y" />  
-                    <legend>Contact Info</legend>
+                    <legend class="admin-legend">Contact Info</legend>
                     <p>
-                        <label for="contact_email">Contact Email</label>
+                        <label class="admin-label" for="contact_email">Contact Email</label>
                         <input type="text" name="contact_email" id="contact_email" value="<?php echo $get_contact_email; ?>" />
                     </p>
                     <p>
-                        <label for="contact_phone">Contact Phone</label>
+                        <label class="admin-label" for="contact_phone">Contact Phone</label>
                         <input type="text" name="contact_phone" id="contact_phone" value="<?php echo $get_contact_phone; ?>" />
                     </p>
                 </fieldset>
                 <fieldset>
-                    <legend>Other Theme Options</legend>
+                    <legend class="admin-legend">Other Theme Options</legend>
                     <p>
-                        <label for="facebook_profile">Facebook Profile (link)</label>
+                        <label class="admin-label" for="facebook_profile">Facebook Profile (link)</label>
                         <input type="text" name="facebook_profile" id="facebook_profile" value="<?php echo $get_facebook_prof; ?>" />
                     </p>
                     <p>
-                        <label for="slide_interval">Homepage Slide interval</label>
+                        <label class="admin-label" for="slide_interval">Homepage Slide interval</label>
                         <input type="text" name="slide_interval" id="slide_interval" value="<?php echo $get_homepage_int; ?>" />
                     </p>
                 </fieldset>
