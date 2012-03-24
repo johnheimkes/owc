@@ -164,6 +164,15 @@ function theme_front_page_settings() {
     }
 }
 
+function customAdmin() {
+    $url = get_settings('siteurl');
+    $url = $url . '/wp-content/themes/rax/wp-admin.css';
+    echo '<!-- custom admin css -->
+          <link rel="stylesheet" type="text/css" href="' . $url . '" />
+          <!-- /end custom adming css -->';
+}
+add_action('admin_head', 'customAdmin');
+
 if (function_exists('add_theme_support')) {
     add_theme_support('post-thumbnails');
 	add_theme_support('menus');
