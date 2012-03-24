@@ -58,6 +58,12 @@ function create_family_stories() {
         )
     );
 }
+
+function family_stories_short( ){
+ return "get_template_part( 'loop', 'family-stories' );";
+}
+add_shortcode( 'family-stories', 'family_stories_short' );
+
 add_action("admin_menu", "setup_theme_admin_menus");
 
 function setup_theme_admin_menus() {  
