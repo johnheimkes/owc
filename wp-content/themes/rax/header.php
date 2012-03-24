@@ -11,6 +11,7 @@
         var ajaxURL   = '<?php echo admin_url(); ?>admin-ajax.php?action=';
         var assetsURL = '<?php echo ASSETS_DIR; ?>';
     </script>
+    <script type="text/javascript" src="<?php echo site_url(); ?>/wp-content/themes/rax/assets/scripts/respond.js"></script>
     <?php wp_head(); ?>
 </head>
 <body>

@@ -123,7 +123,7 @@ html {
 ********************************/
 body {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 #main-wrapper {
@@ -134,6 +134,10 @@ body {
     Media Queries Large
 ********************************/
 @media only screen and (min-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    
     #main-wrapper {
         max-width: 960px;
         margin: 0 auto;
@@ -144,9 +148,12 @@ body {
     Media Queries Medium
 ********************************/
 @media only screen and (max-width: 768px) {
-    h2 {
-        color: blue;
-        font-family: Georgia, serif;
+    body {
+        font-size: 14px;
+    }
+    
+    #main-wrapper {
+        width: 100%;
     }
 }
 
@@ -154,9 +161,12 @@ body {
     Media Queries Small
 ********************************/
 @media only screen and (max-width: 480px) {
-    h2 {
-        color: green;
-        font-family: "Comic Sans", sans-serif;
+    body {
+        font-size: 12px;
+    }
+    
+    #main-wrapper {
+        
     }
 }
 
