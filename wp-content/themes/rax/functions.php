@@ -136,7 +136,7 @@ function theme_front_page_settings() {
 
 if (function_exists('add_theme_support')) {
     add_theme_support('post-thumbnails');
-	add_theme_support( 'menus' );
+	add_theme_support('menus');
 }
 
 Site::init();
