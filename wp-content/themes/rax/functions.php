@@ -31,6 +31,36 @@ function create_homepage_sliders() {
     );
 }
 
+add_action( 'init', 'create_quotes' );
+function create_quotes() {
+    register_post_type( 'windmill_quotes',
+        array(
+            'labels' => array(
+                'name' => __( 'Quotes' ),
+                'singular_name' => __( 'Quote' ),
+                'add_new' => __( 'Add New' ),
+                'add_new_item' => __( 'Add New Quote' ),
+                'edit' => __( 'Edit' ),
+                'edit_item' => __( 'Edit Quote' ),
+                'new_item' => __( 'New Quote' ),
+            ),
+            'public' => true,
+            'supports' => array(
+                    'title',
+                    'author',
+                    'excerpt',
+                    'editor',
+                    'thumbnail',
+                    'revisions',
+                    'categories'
+                ),
+            'taxonomies' => array('category', 'post_tag'),
+            'has_archive' => false,
+            'rewrite' => array('slug' => 'windmill-quotes')
+        )
+    );
+}
+
 add_action( 'init', 'create_family_stories' );
 function create_family_stories() {
     register_post_type( 'family_stories',
@@ -54,7 +84,7 @@ function create_family_stories() {
                     'revisions'
                 ),
             'has_archive' => false,
-            'rewrite' => array('slug' => 'family_stories')
+            'rewrite' => array('slug' => 'family-stories')
         )
     );
 }
