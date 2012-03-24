@@ -17,7 +17,7 @@
 <div id="main-wrapper">
     <section id="header-wrapper">
         <header id="site-header">
-            HEADER
+            <?php wp_nav_menu( array('menu' => 'Header-Main' )); ?>
         </header>
     </section>
 
