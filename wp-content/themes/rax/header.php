@@ -27,7 +27,7 @@
                 </ul>
                 
                 <a class="button donate" href="#">Donate Now</a>
-            </div>
+            </div><!--.supplemental-->
             
             <?php wp_nav_menu( array('menu' => 'Header-Main' )); ?>
         </header>

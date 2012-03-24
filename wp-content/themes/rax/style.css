@@ -143,16 +143,74 @@ body {
     padding-top: 40px;
 }
 
+/* BUTTONS */
+.button {
+    font-size: 15px;
+    padding: 0 5px;
+    display: block;
+    height: 40px;
+    width: 110px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #ffe82c;
+    text-align: center;
+    line-height: 38px;
+    text-shadow: 1px 2px 3px #4d4d4d;
+    filter: dropshadow(color=#4d4d4d, offx=1, offy=2); 
+}
+
+.button:hover {
+    color: #4d4d4d;
+}
+
+.button.donate {
+    padding-left: 15px;
+    background: url(assets/images/icon-tulip.png) no-repeat 7px center #ffe82c;
+}
+
 /* HEADER */
 .logo {
     background: url(assets/images/logo-windmill-project.png) no-repeat;
-    width: 309px;
-    height: 115px;
+    width: 313px;
+    height: 120px;
     text-indent: -9999px;
+    float: left;
 }
 
-.menu {
+.supplemental {
+    width: 635px;
+    float: left;
     overflow: hidden;
+    margin-top: 9px;
+    margin-bottom: 30px;
+}
+
+.supplemental .button {
+    float: left;
+}
+
+.supplemental .promo {
+    overflow: hidden;
+    float: left;
+    line-height: 38px;
+    margin-right: 15px;
+}
+
+.supplemental .promo li {
+    font-size: 19px;
+    color: #87898a;
+    float: left;
+    margin-left: 15px;
+}
+
+.supplemental .promo li:first-child {
+    margin-left: 0;
+}
+
+.menu-header-main-container {
+    overflow: hidden;
+    float: left;
+    width: 615px;
 }
 
 .menu .menu-item {
@@ -175,7 +233,7 @@ body {
     }
     
     #main-wrapper {
-        max-width: 960px;
+        max-width: 1024px;
         margin: 0 auto;
     }
 }
