@@ -566,30 +566,54 @@ body {
 .event {
 	overflow:hidden;
 }
+
 .events-listing-photo {
 	float:left;
 	width:150px;
 	height:150px;
 }
+
 .event-content {
 	float:left;
 	width:819px;
 	margin-left:15px;
 }
+
 .events-heading {
     font-size: 30px;
     font-weight: 600;
     margin-bottom: 20px;
 }
+
 .events-listing h3 {
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 13px;
-	
 }
+
 .event h4 {
 	font-size:16px;
 	font-weight:500;
 	margin-bottom:12px;
 }
 
+.event h5 {
+	font-weight:500;
+}
+
+.button.event-link {
+    font-size: 12px;
+	height:24px;
+    width: 93px;
+    line-height: 20px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    text-shadow: 0 1px 0 rgba(255,255,255,.65);
+}
+.button.event-link:hover {
+	background-color:#f0d814;
+}
+.event-nav {
+	margin-top:7px;
+}
