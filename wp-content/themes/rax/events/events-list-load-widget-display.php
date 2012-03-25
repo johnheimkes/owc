@@ -59,7 +59,7 @@ ob_end_clean();
 		           }
 		        ?> 
 			</span>
-			<a class="learn-more" href="<?php echo get_permalink($post->ID) ?>">Learn More</a>
+			<a class="button event-link" href="<?php echo get_permalink($post->ID) ?>">Learn More</a>
 		</div>
 	</div>
 </li>

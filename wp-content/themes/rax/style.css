@@ -654,16 +654,34 @@ body {
 /* ---------------------------------------------------------------------
  Sidebar
 ------------------------------------------------------------------------ */
-.eventsListWidget {
-
-}
-
 #page-content .sidebar h2 {
 	font-size: 24px;
 }
 
-.sidebar .upcoming {
-	
+.sidebar .event {
+}
+
+.sidebar .event > img {
+	margin-right: 10px;
+	display: inline-block;
+}
+
+.sidebar .event .event-header {
+	display: inline-block;
+	line-height: 1.4;
+}
+
+.sidebar .event-header h3 {
+	font-weight: bold;
+	font-size: 13px;
+}
+
+.sidebar span.when {
+	display: block;
+}
+
+.sidebar .event-link {
+	margin-top: 5px;
 }
 
 /*******************************
