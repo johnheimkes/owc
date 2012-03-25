@@ -141,6 +141,7 @@ html {
 }
 
 body {
+	background: #fff url('assets/images/body_bg.png') 0 0 repeat;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
 }
@@ -161,15 +162,28 @@ body {
     text-align: center;
     line-height: 40px;
     width: 120px;
+    position: relative;
+    border: 1px solid #dac626;
+    border-radius: 15px;
+    text-shadow: 0 1px 0 rgba(255,255,255,.65);
 }
 
 .button:hover {
     color: #4d4d4d;
 }
 
+.button:active {
+	top: 1px;
+}
+
 .button.donate {
-    padding-left: 15px;
+    padding-left: 18px;
     background: url(assets/images/icon-tulip.png) no-repeat 7px 8px #ffe82c;
+    width: 120px;
+}
+
+.button.donate:hover {
+	background-color: #f6e02a;
 }
 
 /* HEADER */
@@ -183,8 +197,7 @@ body {
 }
 
 .supplemental {
-    float: left;
-    overflow: hidden;
+    float: right;
     margin-top: 9px;
     margin-bottom: 30px;
 }
@@ -197,11 +210,11 @@ body {
     overflow: hidden;
     float: left;
     line-height: 40px;
-    margin-right: 15px;
+    margin-right: 35px;
 }
 
 .supplemental .promo li {
-    font-size: 19px;
+    font-size: 18px;
     color: #87898a;
     float: left;
     margin-left: 25px;
@@ -213,14 +226,27 @@ body {
 
 .menu-header-main-container {
     overflow: hidden;
-    float: left;
-    width: 615px;
+    float: right;
 }
 
-.menu .menu-item {
-    width: 90px;
+#menu-header-main .menu-item {
     float: left;
     text-align: center;
+    margin-left: 2px;
+}
+
+#menu-header-main .menu-item a {
+    color: #ffffff;
+    width: 90px;
+    height: 32px;
+    line-height: 32px;
+    background-color: #7ea7d9;
+    text-decoration: none;
+    display: block;
+}
+
+#menu-header-main .menu-item a:hover {
+    background-color: #357abe;
 }
 
 /* PAGE CONTENT */
