@@ -6,7 +6,7 @@ Template Name: Homepage
 
 <?php get_header(); ?>
 
-<?php query_posts('post_type=homepage_slider'); ?>
+<?php query_posts('post_type=homepage_slider&showposts=1'); ?>
 
 <div class="carousel">
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -30,9 +30,9 @@ Template Name: Homepage
                     <?php the_post_thumbnail(); ?>
                     <span class="tile-label"><?php the_title(); ?></span>
                 </div>
-                <p class="tile-body">
+                <div class="tile-body">
                     <?php the_excerpt(); ?>
-                </p>
+                </div>
             </a>
         </li>
     <?php $idx = ($idx % 3) + 1; endwhile; endif; ?>
