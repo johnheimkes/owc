@@ -36,7 +36,7 @@ Template Name: Homepage
     <?php query_posts(array('name' => $name, 'show_posts' => 1, 'post_type' => 'page')); ?>
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
         <li>
-            <a href="<?php echo site_url(); ?>" class="tile tile-<?php echo $idx; ?>">
+            <a href="<?php echo the_permalink(); ?>" class="tile tile-<?php echo $idx; ?>">
                 <div class="tile-header">
                     <?php the_post_thumbnail('homepage-buckets'); ?>
                     <span class="tile-label"><?php the_title(); ?></span>
