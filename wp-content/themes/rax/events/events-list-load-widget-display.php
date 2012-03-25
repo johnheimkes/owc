@@ -37,7 +37,7 @@ post_class($alt_text,$post->ID);
 $class = ob_get_contents();
 ob_end_clean();
 ?>
-<div <?php echo $class ?>>
+<li <?php echo $class ?>>
 	<div class="event">
         <?php if ( has_post_thumbnail()) : ?>
             <?php the_post_thumbnail('events-sidebar'); ?>
@@ -62,5 +62,5 @@ ob_end_clean();
 			<a class="learn-more" href="<?php echo get_permalink($post->ID) ?>">Learn More</a>
 		</div>
 	</div>
-</div>
+</li>
 <?php $alt_text = ( empty( $alt_text ) ) ? 'alt' : ''; ?>
