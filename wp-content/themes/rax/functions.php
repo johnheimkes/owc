@@ -240,6 +240,11 @@ function homePageExcerpt( $src ) {
     return $new_src;
 }
 
+function strip_html_tags( $src ) {
+    $blank_src = strip_tags($src);
+    return $blank_src;
+}
+
 if (function_exists('add_theme_support')) {
     add_theme_support('post-thumbnails');
 	add_theme_support('menus');
