@@ -186,16 +186,22 @@ body {
     padding-left: 18px;
     background: url(assets/images/icon-tulip.png) no-repeat 7px 8px #ffe82c;
     width: 120px;
+    -webkit-transition: all .25s linear;
+    -moz-transition: all .25s linear;
+    transition: all .25s linear;
 }
 
 .button.donate:hover {
-	background-color: #f6e02a;
+	background-color: #ffee64;
+    box-shadow: 0 3px 4px #999;
+    -webkit-transition: all .25s linear;
+    -moz-transition: all .25s linear;
+    transition: all .25s linear;
 }
 
 /* HEADER */
 #site-header {
     margin-bottom: 40px;
-    overflow: hidden;
 }
 
 .logo {
@@ -256,10 +262,16 @@ body {
     background-color: #7ea7d9;
     text-decoration: none;
     display: block;
+    -webkit-transition: all .25s linear;
+    -moz-transition: all .25s linear;
+    transition: all .25s linear;
 }
 
 #menu-header-main .menu-item a:hover {
     background-color: #357abe;
+    -webkit-transition: all .25s linear;
+    -moz-transition: all .25s linear;
+    transition: all .25s linear;
 }
 
 
