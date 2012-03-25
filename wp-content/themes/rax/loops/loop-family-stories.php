@@ -8,7 +8,8 @@ while ( $my_theme_query->have_posts() ) : $my_theme_query->the_post(); ?>
                 <?php the_post_thumbnail(); ?>
             <?php endif; ?>
         <div class="entrytext">
-          <?php the_excerpt('<p class="serif">Read the rest of this page &raquo;</p>'); ?>
+          <?php the_excerpt(); ?>
+          <a href="<?php the_permalink(); ?>">Read more</a>
         </div>
     </div>
 <?php endwhile; ?>
