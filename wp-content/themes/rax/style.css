@@ -475,3 +475,60 @@ body {
     font-size: 14px;
     color: #00315D;
 }
+
+.site-footer {
+    border-top: 6px solid #357abe;
+    padding: 10px 10px 20px;
+}
+
+.menu-footer-container ul {
+    float: left;
+    font-size: 14px;
+    padding-top: 5px;
+}
+
+.menu-footer-container li {
+    float: left;
+    padding: 0 10px 10px;
+}
+
+.menu-footer-container li:first-child {
+    padding-left: 0;
+}
+
+.site-footer a {
+    color: #357abe;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+}
+
+.sponsors {
+    text-align: right;
+}
+
+.sponsor {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.copyright {
+    float: left;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+.privacy-links {
+    float: right;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.privacy-links li {
+    float: left;
+    margin-left: 10px;
+}
+
