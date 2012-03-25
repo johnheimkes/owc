@@ -10,8 +10,9 @@ var NERD = NERD || {};
 jQuery(function($) {
     var slideTimer;
 
-    var $nav = $('#carousel-nav li');
+    var $nav = $('.carousel-nav li');
     var isActive = false;
+    var lastIdx = 0;
     $nav.each(function (idx) {
        $(this).find('a').click(function(e) {
            e.preventDefault();
@@ -20,10 +21,18 @@ jQuery(function($) {
                .removeClass('active')
                .eq(idx)
                .addClass('active');
+
+           if (lastIdx != idx) {
+               $('.slide')
+                   .fadeOut(1000)
+                   .eq(idx)
+                   .fadeIn(1000)
+           }
+
+           lastIdx = idx;
+
            $('.slide')
-               .removeClass('active')
                .eq(idx)
-               .addClass('active')
                .mouseover(function() { clearTimeout(slideTimer); isActive = false; })
                .mouseout(function() { if (!isActive) doNav(); });
                
@@ -35,7 +44,7 @@ jQuery(function($) {
                slideTimer = setTimeout(function() {
                    var nextIdx = (idx < $nav.length - 1 ? idx + 1 : 0);
                    $nav.eq(nextIdx).find('a').click();
-               }, 1000);
+               }, 2000);
            }
            return false;
        });

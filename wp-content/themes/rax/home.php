@@ -10,22 +10,24 @@ Template Name: Homepage
 
 <div class="carousel" id="js-featured-carousel">
     <?php $ct=0; if (have_posts()) : while (have_posts()) : the_post(); ?>
-    <div class="slide">
+    <div class="slide<?php echo $ct == 0 ? ' active' : ''; ?>">
         <div class="slide-image"><?php the_post_thumbnail('homepage-carousel'); ?></div>
         <div class="slide-content">
-            <?php the_content(); ?>
+			<div class="slide-copy">
+				<?php the_content(); ?>
+			</div>
         </div>
     </div>
     <?php $ct++; endwhile; endif; ?>
-    <nav id="carousel-nav">
-            <ul>
-                <?php for($i=0;$i<$ct;$i++): ?>
-                <li class="nav">
-                    <a href="#">*</a>
-                </li>
-                <?php endfor; ?>
-            </ul>
-        </nav>
+</div>
+<div class="carousel-nav">
+    <ul>
+        <?php for($i=0;$i<$ct;$i++): ?>
+        <li class="nav">
+            <a href="#">&#10625;</a>
+        </li>
+        <?php endfor; ?>
+    </ul>
 </div>
 
 <ul class="tiles">

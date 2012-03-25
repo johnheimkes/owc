@@ -186,16 +186,22 @@ body {
     padding-left: 18px;
     background: url(assets/images/icon-tulip.png) no-repeat 7px 8px #ffe82c;
     width: 120px;
+    -webkit-transition: all .25s linear;
+    -moz-transition: all .25s linear;
+    transition: all .25s linear;
 }
 
 .button.donate:hover {
-	background-color: #f6e02a;
+	background-color: #ffee64;
+    box-shadow: 0 3px 4px #999;
+    -webkit-transition: all .25s linear;
+    -moz-transition: all .25s linear;
+    transition: all .25s linear;
 }
 
 /* HEADER */
 #site-header {
     margin-bottom: 40px;
-    overflow: hidden;
 }
 
 .logo {
@@ -256,14 +262,31 @@ body {
     background-color: #7ea7d9;
     text-decoration: none;
     display: block;
+    -webkit-transition: all .25s linear;
+    -moz-transition: all .25s linear;
+    transition: all .25s linear;
 }
 
 #menu-header-main .menu-item a:hover {
     background-color: #357abe;
+    -webkit-transition: all .25s linear;
+    -moz-transition: all .25s linear;
+    transition: all .25s linear;
 }
 
 
 /* CAROUSEL */
+.carousel {
+    position: relative;
+    height: 345px;
+    margin-bottom: 5px;
+}
+
+.carousel .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 .carousel .slide .slide-image {
     float: left;
 }
@@ -274,7 +297,7 @@ body {
     width: 511px;
     background: #005aab;
     color: #ffffff;
-    padding: 115px 50px 30px;
+    padding: 80px 50px 30px;
 }
 
 .carousel .slide h2 {
@@ -304,6 +327,36 @@ body {
 
 .carousel .slide {
     display: none;
+}
+
+.carousel-nav {
+    text-align: center;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #ADADAD;
+    margin: 0 15px 15px;
+}
+
+.carousel-nav ul {
+    display: inline-block;
+}
+
+.carousel-nav li {
+    float: left;
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+.carousel-nav li:first-child {
+    margin-left: 0;
+}
+
+.carousel-nav li a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.carousel-nav li.active a {
+    color: #ED1C24;
 }
 
 /* PAGE CONTENT */
@@ -366,10 +419,16 @@ body {
     color: #000;
     display: block;
     text-decoration: none;
+    -webkit-transition: all .25s linear;
+    -moz-transition: all .25s linear;
+    transition: all .25s linear;
 }
 
 .tile:hover {
     background-color: #eee;
+    -webkit-transition: all .25s linear;
+    -moz-transition: all .25s linear;
+    transition: all .25s linear;
 }
 
 .tile-header {
@@ -381,28 +440,46 @@ body {
 }
 
 .tile-1 .tile-header {
-    background: #005aab;
+    background-color: #005aab;
+    -webkit-transition: all .25s linear;
+    -moz-transition: all .25s linear;
+    transition: all .25s linear;
 }
 
 .tile-1:hover .tile-header {
-    background: #0070d5;
+    background-color: #0070d5;
+    -webkit-transition: all .25s linear;
+    -moz-transition: all .25s linear;
+    transition: all .25s linear;
 }
 
 .tile-2 .tile-header {
     background: #ed1c24;
+    -webkit-transition: all .25s linear;
+    -moz-transition: all .25s linear;
+    transition: all .25s linear;
 }
 
 .tile-2:hover .tile-header {
     background: #f8333a;
+    -webkit-transition: all .25s linear;
+    -moz-transition: all .25s linear;
+    transition: all .25s linear;
 }
 
 .tile-3 .tile-header {
     background: #ffe82c;
     color: #807316;
+    -webkit-transition: all .25s linear;
+    -moz-transition: all .25s linear;
+    transition: all .25s linear;
 }
 
 .tile-3:hover .tile-header {
     background: #ffee64;
+    -webkit-transition: all .25s linear;
+    -moz-transition: all .25s linear;
+    transition: all .25s linear;
 }
 
 .tile-header > img {
