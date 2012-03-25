@@ -5,7 +5,19 @@ include 'static/Site.php';
 
 if ( function_exists ('register_sidebar')) { 
     register_sidebar(); 
-} 
+}
+
+if ( function_exists( 'add_image_size' ) ) { 
+    add_image_size( 'homepage-carousel', 513, 345 );
+    add_image_size( 'homepage-buckets', 220, 120 );
+    add_image_size( 'events-sidebar', 58, 58 );
+    add_image_size( 'events-listing', 150, 150 );
+    add_image_size( 'events-stories-single', 320, 200 );
+    add_image_size( 'page-image', 340, 200 );
+    add_image_size( 'stories-listing', 145, 95 );
+}
+
+ 
 
 
 add_action('init', 'add_excerpt_to_pages');
@@ -36,6 +48,32 @@ function create_homepage_sliders() {
                 ),
             'has_archive' => false,
             'rewrite' => array('slug' => 'homepage-slider')
+        )
+    );
+}
+
+add_action( 'init', 'create_faqs' );
+function create_faqs() {
+    register_post_type( 'faqs',
+        array(
+            'labels' => array(
+                'name' => __( 'FAQs' ),
+                'singular_name' => __( 'FAQs' ),
+                'add_new' => __( 'Add New' ),
+                'add_new_item' => __( 'Add New FAQ' ),
+                'edit' => __( 'Edit' ),
+                'edit_item' => __( 'Edit FAQ' ),
+                'new_item' => __( 'New FAQ' ),
+            ),
+            'public' => true,
+            'supports' => array(
+                    'title',
+                    'editor',
+                    'thumbnail',
+                    'revisions'
+                ),
+            'has_archive' => false,
+            'rewrite' => array('slug' => 'faqs')
         )
     );
 }
@@ -96,6 +134,11 @@ function create_family_stories() {
         )
     );
 }
+
+function faqs_short( ){
+    get_template_part( 'loops/loop', 'faqs' );
+}
+add_shortcode( 'faqs-list', 'faqs_short' );
 
 function family_stories_short( ){
     get_template_part( 'loops/loop', 'family-stories' );
@@ -185,6 +228,12 @@ function customAdmin() {
           <!-- /end custom adming css -->';
 }
 add_action('admin_head', 'customAdmin');
+
+function homePageExcerpt( $src ) {
+    $blank_src = strip_tags($src);
+    $new_src = "<p>".$blank_src."  <span class='read-more'>More</span></p>";
+    return $new_src;
+}
 
 if (function_exists('add_theme_support')) {
     add_theme_support('post-thumbnails');

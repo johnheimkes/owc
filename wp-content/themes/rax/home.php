@@ -6,13 +6,13 @@ Template Name: Homepage
 
 <?php get_header(); ?>
 
-<?php query_posts('post_type=homepage_slider&showposts=1'); ?>
+<?php query_posts('post_type=homepage_slider&showposts=3'); ?>
 
-<div class="carousel">
+<div class="carousel" id="js-featured-carousel">
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
     <div class="slide">
-        <div class="image-wrapper"><?php the_post_thumbnail( array(513,345) ); ?></div>
-        <div class="copy-wrapper">
+        <div class="slide-image"><?php the_post_thumbnail('homepage-carousel'); ?></div>
+        <div class="slide-content">
             <?php the_content(); ?>
         </div>
     </div>
@@ -27,11 +27,13 @@ Template Name: Homepage
         <li>
             <a href="<?php echo site_url(); ?>" class="tile tile-<?php echo $idx; ?>">
                 <div class="tile-header">
-                    <?php the_post_thumbnail(); ?>
+                    <?php the_post_thumbnail('homepage-buckets'); ?>
                     <span class="tile-label"><?php the_title(); ?></span>
                 </div>
                 <div class="tile-body">
-                    <?php the_excerpt(); ?>
+                    <?php 
+                    $excerpt = get_the_excerpt();
+                    echo homePageExcerpt($excerpt); ?>
                 </div>
             </a>
         </li>
