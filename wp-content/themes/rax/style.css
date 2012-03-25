@@ -340,6 +340,9 @@ body {
     transition: all .25s linear;
 }
 
+#menu-header-main .menu-item.current-menu-item a {
+    background-color: #357abe;
+}
 
 /* CAROUSEL */
 .carousel {
