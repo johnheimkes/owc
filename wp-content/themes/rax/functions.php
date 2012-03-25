@@ -3,6 +3,11 @@ define('ASSETS_RELATIVE_PATH', '/assets/');
 define('ASSETS_DIR', get_template_directory_uri() . ASSETS_RELATIVE_PATH);
 include 'static/Site.php';
 
+if ( function_exists ('register_sidebar')) { 
+    register_sidebar(); 
+} 
+
+
 add_action('init', 'add_excerpt_to_pages');
 function add_excerpt_to_pages()
 {
@@ -25,8 +30,6 @@ function create_homepage_sliders() {
             'public' => true,
             'supports' => array(
                     'title',
-                    'author',
-                    'excerpt',
                     'editor',
                     'thumbnail',
                     'revisions'
@@ -53,7 +56,6 @@ function create_quotes() {
             'public' => true,
             'supports' => array(
                     'title',
-                    'author',
                     'excerpt',
                     'editor',
                     'thumbnail',
