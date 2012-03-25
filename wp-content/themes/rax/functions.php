@@ -140,8 +140,13 @@ function faqs_short( ){
 }
 add_shortcode( 'faqs-list', 'faqs_short' );
 
+function featured_quote( ){
+    get_template_part( 'loops/loop', 'faqs' );
+}
+add_shortcode( 'quote', 'featured_quote' );
+
 function family_stories_short( ){
-    get_template_part( 'loops/loop', 'family-stories' );
+    get_template_part( 'loops/loop', 'quote' );
 }
 add_shortcode( 'family-stories', 'family_stories_short' );
 
@@ -233,6 +238,11 @@ function homePageExcerpt( $src ) {
     $blank_src = strip_tags($src);
     $new_src = "<p>".$blank_src."  <span class='read-more'>More</span></p>";
     return $new_src;
+}
+
+function strip_html_tags( $src ) {
+    $blank_src = strip_tags($src);
+    return $blank_src;
 }
 
 if (function_exists('add_theme_support')) {
