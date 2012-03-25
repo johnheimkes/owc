@@ -354,13 +354,20 @@ body {
 }
 
 .tile {
+    border-radius: 5px;
     color: #000;
+    display: block;
     text-decoration: none;
+}
+
+.tile:hover {
+    background-color: #eee;
 }
 
 .tile-header {
     border-radius: 5px;
     color: #fff;
+    font-size: 16px;
     padding: 15px;
     text-align: center;
 }
@@ -390,14 +397,14 @@ body {
 }
 
 .tile-body {
+    font-size: 15px;
     line-height: 1.25;
     padding: 10px;
 }
 
-.tile-body > a {
-    
-}
-
-.inner-link {
-    
+.read-more {
+    font-weight: 400;
+    text-decoration: underline;
+    font-size: 14px;
+    color: #00315D;
 }
