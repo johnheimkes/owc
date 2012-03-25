@@ -304,7 +304,7 @@ body {
 
 .tiles > li {
     float: left;
-    padding: 0 10px;
+    padding: 25px;
     width: 25%;
 }
 
@@ -316,7 +316,8 @@ body {
 .tile-header {
     border-radius: 5px;
     color: #fff;
-    padding: 10px;
+    padding: 15px;
+    text-align: center;
 }
 
 .tile-1 .tile-header {
@@ -333,16 +334,18 @@ body {
 }
 
 .tile-header > img {
-    
+    width: 100%;
 }
 
 .tile-label {
     display: block;
+    font-weight: bold;
+    padding: 10px 0 0;
     text-align: center;
 }
 
 .tile-body {
-    
+    padding: 10px;
 }
 
 .tile-body > a {

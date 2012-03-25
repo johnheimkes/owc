@@ -34,7 +34,7 @@ Template Name: Homepage
                 <span class="tile-label">About Us</span>
             </div>
             <p class="tile-body">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <span class="inner-link">More</span>
+                Lorem ipsum dolor sit amet, consectetur kitties adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <span class="inner-link">More</span>
             </p>
         </a>
     </li>
@@ -45,7 +45,7 @@ Template Name: Homepage
                 <span class="tile-label">About Us</span>
             </div>
             <p class="tile-body">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <span class="inner-link">More</span>
+                Lorem ipsum dolor sit amet, consectetur kitties adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <span class="inner-link">More</span>
             </p>
         </a>
     </li>
@@ -56,7 +56,7 @@ Template Name: Homepage
                 <span class="tile-label">About Us</span>
             </div>
             <p class="tile-body">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <span class="inner-link">More</span>
+                Lorem ipsum dolor sit amet, consectetur kitties adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <span class="inner-link">More</span>
             </p>
         </a>
     </li>
@@ -67,7 +67,7 @@ Template Name: Homepage
                 <span class="tile-label">About Us</span>
             </div>
             <p class="tile-body">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <span class="inner-link">More</span>
+                Lorem ipsum dolor sit amet, consectetur kitties adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <span class="inner-link">More</span>
             </p>
         </a>
     </li>
