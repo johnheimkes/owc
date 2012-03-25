@@ -10,7 +10,7 @@ var NERD = NERD || {};
 jQuery(function($) {
     var slideTimer;
 
-    var $nav = $('#carousel-nav li');
+    var $nav = $('.carousel-nav li');
     var isActive = false;
     var lastIdx = 0;
     $nav.each(function (idx) {
@@ -44,7 +44,7 @@ jQuery(function($) {
                slideTimer = setTimeout(function() {
                    var nextIdx = (idx < $nav.length - 1 ? idx + 1 : 0);
                    $nav.eq(nextIdx).find('a').click();
-               }, 5000);
+               }, 2000);
            }
            return false;
        });

@@ -37,24 +37,33 @@ post_class($alt_text,$post->ID);
 $class = ob_get_contents();
 ob_end_clean();
 ?>
-<li <?php echo $class ?>>
-	<div class="when">
-		<?php
-			$space = false;
-			$output = '';
-			echo tribe_get_start_date( $post->ID ); 
-
-         if( tribe_is_multiday( $post->ID ) || !$event->AllDay ) {
-            echo ' - ' . tribe_get_end_date($post->ID);
-         }
-
-			if($event->AllDay) {
-				echo ' <small>('.__('All Day','tribe-events-calendar').')</small>';
-         }
-      ?> 
-	</div>
+<div <?php echo $class ?>>
 	<div class="event">
-		<a href="<?php echo get_permalink($post->ID) ?>"><?php echo $post->post_title ?></a>
+        <?php if ( has_post_thumbnail()) : ?>
+            <?php the_post_thumbnail('events-sidebar'); ?>
+        <?php endif; ?>
+		<div class="event-header">
+			<h3><?php echo $post->post_title ?></h3>
+			<span class="when">
+		  		<?php
+		  			$space = false;
+		  			$output = '';
+		  			echo tribe_get_start_date(); 
+
+		           // if( tribe_is_multiday( $post->ID ) || !$event->AllDay ) {
+		           //    echo ' - ' . tribe_get_end_date($post->ID);
+		           // }
+
+		  			if($event->AllDay) {
+		  				echo ' <small>('.__('All Day','tribe-events-calendar').')</small>';
+		           }
+		        ?> 
+			</span>
+			<a class="learn-more" href="<?php echo get_permalink($post->ID) ?>">Learn More</a>
+		</div>
 	</div>
-</li>
+	<!-- <div class="event-desc">
+		<?php the_excerpt(); ?>
+	</div> -->
+</div>
 <?php $alt_text = ( empty( $alt_text ) ) ? 'alt' : ''; ?>
