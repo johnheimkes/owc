@@ -6,25 +6,15 @@ Template Name: Homepage
 
 <?php get_header(); ?>
 
-<?php if (have_posts()) : while (have_posts()) : the_post();?>
- <div class="post">
-  <h2 id="post-<?php the_ID(); ?>"><?php the_title();?></h2>
-  <div class="entrytext">
-   <?php the_content(); ?>
-  </div>
- </div>
- 
- <?php endwhile; endif; ?>
-<?php query_posts('category_name=homepage&showposts=1'); ?>
+<?php query_posts('post_type=homepage_slider'); ?>
 
-  <?php while (have_posts()) : the_post(); ?>
-    <div class="quote">
-		<h3><?php the_title();?></h3>
-		<?php the_content();?>
-	</div>
-  <?php endwhile;?>
- 
- <?php edit_post_link('Edit this entry.', '<p>', '</p>'); ?>
+<div class="homepage-sliders">
+<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+<div class="homepage-slider">
+    <div class="thumb"><?php the_post_thumbnail(); ?></div>
+    <div class="text"><?php the_content(); ?></div>
+    <?php endwhile; endif; ?>
+</div>
 
 <ul class="footer-tiles">
     <li>
@@ -66,6 +56,3 @@ Template Name: Homepage
         </a>
     </li>
 </ul>
-
-<?php get_footer(); ?>
-

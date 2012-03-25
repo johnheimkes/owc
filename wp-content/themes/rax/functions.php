@@ -26,7 +26,7 @@ function create_homepage_sliders() {
                     'revisions'
                 ),
             'has_archive' => false,
-            'rewrite' => array('slug' => 'homepage_slider')
+            'rewrite' => array('slug' => 'homepage-slider')
         )
     );
 }
