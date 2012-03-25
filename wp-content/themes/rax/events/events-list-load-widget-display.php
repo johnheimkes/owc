@@ -62,8 +62,5 @@ ob_end_clean();
 			<a class="learn-more" href="<?php echo get_permalink($post->ID) ?>">Learn More</a>
 		</div>
 	</div>
-	<!-- <div class="event-desc">
-		<?php the_excerpt(); ?>
-	</div> -->
 </div>
 <?php $alt_text = ( empty( $alt_text ) ) ? 'alt' : ''; ?>
