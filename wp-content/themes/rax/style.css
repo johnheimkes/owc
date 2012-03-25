@@ -440,7 +440,11 @@ body {
 
 #page-content h2 a {
     text-decoration: none;
-    color: #000000;
+    color: #357ABE;
+}
+
+#page-content h2 a:hover {
+    text-decoration: underline;
 }
 
 #page-content > .post {
