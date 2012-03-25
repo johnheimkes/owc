@@ -82,7 +82,7 @@ html {
 */
 
 /*Bauhaus Font-Face Declarations*/
-@font-face {
+/*@font-face {
     font-family: 'BauhausRegular';
     src: url('assets/fonts/bauhaus-bold-webfont.eot');
     src: url('assets/fonts/bauhaus-bold-webfont.eot?#iefix') format('embedded-opentype'),
@@ -116,7 +116,7 @@ html {
     font-weight: normal;
     font-style: normal;
 }
-
+*/
 
 /* Clearfix */
 .group:before,
@@ -142,8 +142,9 @@ html {
 
 body {
 	background: #fff url('assets/images/body_bg.png') 0 0 repeat;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Lato", sans-serif;
     font-size: 13px;
+    font-weight: 300;
 }
 
 #main-wrapper {
@@ -155,6 +156,7 @@ body {
 /* BUTTONS */
 .button {
     font-size: 15px;
+    font-weight: 400;
     display: block;
     height: 40px;
     width: 100px;
@@ -224,7 +226,7 @@ body {
 
 .supplemental .promo li {
     font-size: 18px;
-    color: #87898a;
+    color: #555;
     float: left;
     margin-left: 25px;
 }
@@ -246,6 +248,7 @@ body {
 
 #menu-header-main .menu-item a {
     color: #ffffff;
+    font-weight: 400;
     width: 90px;
     height: 32px;
     line-height: 32px;
@@ -303,4 +306,61 @@ body {
     Matt's Styles
 ********************************/
 
+.tiles {
+    
+}
 
+.tiles > li {
+    float: left;
+    padding: 25px;
+    width: 25%;
+}
+
+.tile {
+    color: #000;
+    text-decoration: none;
+}
+
+.tile-header {
+    border-radius: 5px;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+}
+
+.tile-1 .tile-header {
+    background-color: #005aab;
+}
+
+.tile-2 .tile-header {
+    background-color: #ed1c24;
+}
+
+.tile-3 .tile-header {
+    background-color: #ffe82c;
+    color: #807316;
+}
+
+.tile-header > img {
+    width: 100%;
+}
+
+.tile-label {
+    display: block;
+    font-weight: bold;
+    padding: 10px 0 0;
+    text-align: center;
+}
+
+.tile-body {
+    line-height: 1.25;
+    padding: 10px;
+}
+
+.tile-body > a {
+    
+}
+
+.inner-link {
+    
+}

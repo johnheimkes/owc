@@ -20,42 +20,21 @@ Template Name: Homepage
 </div>
 
 <ul class="footer-tiles">
-    <li>
-        <a href="#" class="footer-tile tile-1">
-            <div class="footer-tile-header">
-                <img src="<?php echo site_url(); ?>/wp-content/uploads/2012/03/287-150x150.jpg" alt="" />
-                About Us
-            </div>
-            <p class="footer-tile-body">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <a href="#">More</a>
-            </p>
-        </a>
-        <a href="#" class="footer-tile tile-2">
-            <div class="footer-tile-header">
-                <img src="<?php echo site_url(); ?>/wp-content/uploads/2012/03/287-150x150.jpg" alt="" />
-                About Us
-            </div>
-            <p class="footer-tile-body">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <a href="#">More</a>
-            </p>
-        </a>
-        <a href="#" class="footer-tile tile-3">
-            <div class="footer-tile-header">
-                <img src="<?php echo site_url(); ?>/wp-content/uploads/2012/03/287-150x150.jpg" alt="" />
-                About Us
-            </div>
-            <p class="footer-tile-body">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <a href="#">More</a>
-            </p>
-        </a>
-        <a href="#" class="footer-tile tile-1">
-            <div class="footer-tile-header">
-                <img src="<?php echo site_url(); ?>/wp-content/uploads/2012/03/287-150x150.jpg" alt="" />
-                About Us
-            </div>
-            <p class="footer-tile-body">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <a href="#">More</a>
-            </p>
-        </a>
-    </li>
+    <?php foreach(array('about-us', 'events', 'stories', 'contact-us') as $name): ?>
+    <?php rewind_posts(); ?>
+    <?php query_posts(array('name' => $name, 'show_posts' => 1, 'post_type' => 'page')); ?>
+    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+        <li>
+            <a href="<?php echo site_url(); ?>" class="tile tile-1">
+                <div class="tile-header">
+                    <?php the_post_thumbnail(); ?>
+                    <span class="tile-label"><?php the_title(); ?></span>
+                </div>
+                <p class="tile-body">
+                    <?php the_excerpt(); ?>
+                </p>
+            </a>
+        </li>
+    <?php endwhile; endif; ?>
+    <?php endforeach; ?>
 </ul>
