@@ -137,7 +137,7 @@ function contact_address( ){
 add_shortcode( 'contact-address', 'contact_address' );
 
 function contact_phone( ){
-    return '<div class="contact-phone">' . get_option("theme_option_phone") . '</div>';
+    return '<span class="contact-phone">' . get_option("theme_option_phone") . '</span>';
 }
 add_shortcode( 'contact-phone', 'contact_phone' );
 
