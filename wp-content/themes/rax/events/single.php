@@ -89,12 +89,15 @@ if ( !defined('ABSPATH') ) { die('-1'); }
 <?php if( tribe_embed_google_map( get_the_ID() ) ) : ?>
 <?php if( tribe_address_exists( get_the_ID() ) ) { echo tribe_get_embedded_map(); } ?>
 <?php endif; ?>
-<div class="entry">
+<div class="event">
+
+	<div class="event-summary"><?php the_content() ?></div>
+	<div class="event-single-image">
 	<?php
 	if ( function_exists('has_post_thumbnail') && has_post_thumbnail() ) {?>
 		<?php the_post_thumbnail(); ?>
 	<?php } ?>
-	<div class="summary"><?php the_content() ?></div>
+	</div>
 	<?php if (function_exists('tribe_get_ticket_form')) { tribe_get_ticket_form(); } ?>		
 </div>
 <?php if( function_exists('tribe_get_single_ical_link') ): ?>

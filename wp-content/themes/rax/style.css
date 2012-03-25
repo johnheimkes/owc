@@ -908,6 +908,15 @@ body {
     text-shadow: 0 1px 0 rgba(255,255,255,.65);
 }
 
+.event-summary {
+	float:left;
+	width:670px;
+}
+
+.event-single-image {
+	float:right;
+}
+
 .button.event-link:hover {
 	background-color:#f0d814;
 }
