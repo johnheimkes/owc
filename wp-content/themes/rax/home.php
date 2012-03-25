@@ -17,13 +17,13 @@ Template Name: Homepage
 <?php endwhile; endif; ?>
 </div>
 
-<ul class="footer-tiles">
-    <?php foreach(array('about-us', 'events', 'stories', 'contact-us') as $name): ?>
+<ul class="tiles">
+    <?php $idx=1; foreach(array('about-us', 'events', 'stories', 'contact-us') as $name): ?>
     <?php rewind_posts(); ?>
     <?php query_posts(array('name' => $name, 'show_posts' => 1, 'post_type' => 'page')); ?>
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
         <li>
-            <a href="<?php echo site_url(); ?>" class="tile tile-1">
+            <a href="<?php echo site_url(); ?>" class="tile tile-<?php echo $idx; ?>">
                 <div class="tile-header">
                     <?php the_post_thumbnail(); ?>
                     <span class="tile-label"><?php the_title(); ?></span>
@@ -33,6 +33,6 @@ Template Name: Homepage
                 </p>
             </a>
         </li>
-    <?php endwhile; endif; ?>
+    <?php $idx = ($idx % 3) + 1; endwhile; endif; ?>
     <?php endforeach; ?>
 </ul>
