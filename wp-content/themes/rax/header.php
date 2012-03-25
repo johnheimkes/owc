@@ -13,6 +13,7 @@
         var sliderTimeout = <?php echo (int)get_option('theme_option_homepage_int'); ?>;
     </script>
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <!--[if lt IE 9]> <script src="<?php echo site_url(); ?>/wp-content/themes/rax/assets/scripts/html5.js" type="text/javascript"></script> <![endif]-->
     <?php wp_head(); ?>
     <script type="text/javascript" src="<?php echo site_url(); ?>/wp-content/themes/rax/assets/scripts/respond.js"></script>
     <script type="text/javascript" src="<?php echo site_url(); ?>/wp-content/themes/rax/assets/scripts/global.js"></script>
