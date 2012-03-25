@@ -38,7 +38,7 @@ Template Name: Homepage
         <li>
             <a href="<?php echo site_url(); ?>" class="tile tile-<?php echo $idx; ?>">
                 <div class="tile-header">
-                    <?php the_post_thumbnail('events-listing'); ?>
+                    <?php the_post_thumbnail('homepage-buckets'); ?>
                     <span class="tile-label"><?php the_title(); ?></span>
                 </div>
                 <div class="tile-body">

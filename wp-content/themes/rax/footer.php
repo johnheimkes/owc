@@ -8,8 +8,7 @@
         </div>
         <div class="copyright">Copyright © 2005-<?php echo date('Y'); ?> Windmill Project - All Rights Reserved. The Windmill Project is a 501(c)(3) organization</div>
         <ul class="privacy-links">
-        	<li><a href="#">Privacy Policy</a></li>
-        	<li><a href="#">Terms of Service</a></li>
+        	<li><a href="<?php echo site_url('terms-conditions'); ?>">Privacy Policy / Terms of Service</a></li>
         </ul>
     </footer>
     <?php wp_footer(); ?>
