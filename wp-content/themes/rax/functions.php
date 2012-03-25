@@ -139,19 +139,24 @@ function contact_address( ){
     $get_contact_addy = get_option("theme_option_address");
     $get_contact_city = get_option("theme_option_city");
     $total_address    = $get_contact_addy."<br />".$get_contact_city;
-    echo $total_address;
+    return '<div class="contact-address">' . $total_address . '</div>';
 }
 add_shortcode( 'contact-address', 'contact_address' );
 
 function contact_phone( ){
-    $get_contact_phone   = get_option("theme_option_phone");
-    echo $get_contact_phone;
+    return '<div class="contact-phone">' . get_option("theme_option_phone") . '</div>';
 }
 add_shortcode( 'contact-phone', 'contact_phone' );
 
+function contact_name( ){
+    return '<div class="contact-name">' . get_option('theme_option_name') . '</div>';
+}
+add_shortcode('contact-name', 'contact_name');
+
+
 function contact_email( ){
     $get_contact_email = get_option("theme_option_email");  
-    echo $get_contact_email;
+    return $get_contact_email;
 }
 add_shortcode( 'contact-email', 'contact_email' );
 
@@ -190,9 +195,30 @@ function theme_front_page_settings() {
     if (!current_user_can('manage_options')) {  
         wp_die('You do not have sufficient permissions to access this page.');  
     }
+
+    if (isset($_POST["update_settings"])) {
+        $contact_email      = esc_attr($_POST["contact_email"]);
+        $contact_phone      = esc_attr($_POST["contact_phone"]);
+        $contact_name       = esc_attr($_POST["contact_name"]);
+        $contact_address    = esc_attr($_POST["contact_address"]);
+        $contact_city       = esc_attr($_POST["contact_city"]);
+
+        $facebook_prof      = esc_attr($_POST["facebook_profile"]);
+        $homepage_int       = esc_attr($_POST["slide_interval"]);
+
+        update_option("theme_option_email", $contact_email);
+        update_option("theme_option_phone", $contact_phone);
+        update_option("theme_option_name", $contact_name);
+        update_option("theme_option_address", $contact_address);
+        update_option("theme_option_city", $contact_city);
+
+        update_option("theme_option_facebook_prof", $facebook_prof);
+        update_option("theme_option_homepage_int", $homepage_int);
+    }
     
     $get_contact_email   = get_option("theme_option_email");  
     $get_contact_phone   = get_option("theme_option_phone");
+    $get_contact_name    = get_option("theme_option_name");
     $get_contact_address = get_option("theme_option_address");
     $get_contact_city    = get_option("theme_option_city");
     
@@ -211,6 +237,10 @@ function theme_front_page_settings() {
                     <p>
                         <label class="admin-label" for="contact_email">Contact Email</label>
                         <input type="text" name="contact_email" id="contact_email" value="<?php echo $get_contact_email; ?>" />
+                    </p>
+                    <p>
+                        <label class="admin-label" for="contact_name">Contact Name</label>
+                        <input type="text" name="contact_name" id="contact_name" value="<?php echo $get_contact_name; ?>" />
                     </p>
                     <p>
                         <label class="admin-label" for="contact_phone">Contact Phone</label>
@@ -241,26 +271,8 @@ function theme_front_page_settings() {
                 </p>
             </form>
         </div>
-    
-    
     <?php
-    if (isset($_POST["update_settings"])) {  
-        $contact_email      = esc_attr($_POST["contact_email"]);
-        $contact_phone      = esc_attr($_POST["contact_phone"]);
-        $contact_address    = esc_attr($_POST["contact_address"]);
-        $contact_city       = esc_attr($_POST["contact_city"]);
-                
-        $facebook_prof      = esc_attr($_POST["facebook_profile"]);
-        $homepage_int       = esc_attr($_POST["slide_interval"]);
-        
-        update_option("theme_option_email", $contact_email);
-        update_option("theme_option_phone", $contact_phone);
-        update_option("theme_option_address", $contact_address);
-        update_option("theme_option_city", $contact_city);
-        
-        update_option("theme_option_facebook_prof", $facebook_prof);
-        update_option("theme_option_homepage_int", $homepage_int);
-    }
+
 }
 
 function customAdmin() {
