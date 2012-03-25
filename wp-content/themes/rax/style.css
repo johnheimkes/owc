@@ -163,6 +163,9 @@ body {
     line-height: 40px;
     width: 120px;
     position: relative;
+    border: 1px solid #dac626;
+    border-radius: 15px;
+    text-shadow: 0 1px 0 rgba(255,255,255,.65);
 }
 
 .button:hover {
@@ -174,11 +177,9 @@ body {
 }
 
 .button.donate {
-    padding-left: 15px;
+    padding-left: 18px;
     background: url(assets/images/icon-tulip.png) no-repeat 7px 8px #ffe82c;
-    text-shadow: 0 1px 0 rgba(255,255,255,.65);
-    border: 1px solid #dac626;
-	border-radius: 15px;
+    width: 120px;
 }
 
 .button.donate:hover {
@@ -196,8 +197,7 @@ body {
 }
 
 .supplemental {
-    float: left;
-    overflow: hidden;
+    float: right;
     margin-top: 9px;
     margin-bottom: 30px;
 }
@@ -210,7 +210,7 @@ body {
     overflow: hidden;
     float: left;
     line-height: 40px;
-    margin-right: 15px;
+    margin-right: 35px;
 }
 
 .supplemental .promo li {
@@ -226,7 +226,7 @@ body {
 
 .menu-header-main-container {
     overflow: hidden;
-    float: left;
+    float: right;
 }
 
 #menu-header-main .menu-item {
