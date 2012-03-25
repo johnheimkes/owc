@@ -45,12 +45,14 @@ if ( !defined('ABSPATH') ) { die('-1'); }
 				<?php if (has_excerpt ()): ?>
 					<?php the_excerpt(); ?>
 				<?php else: ?>
+					<div class="entrytext">
 					<?php 
-					if (get_the_content()){
-						$content = get_the_content();
-						echo substr($content, 0, 365) . "...";
-					} 
+						if (get_the_content()){
+							$content = get_the_content();
+							echo substr($content, 0, 365) . "...";
+						} 
 					?>
+					</div>
 				<?php endif; ?>
 				</p>
 				<ul class="event-nav">
@@ -125,12 +127,15 @@ if ( !defined('ABSPATH') ) { die('-1'); }
 				<?php if (has_excerpt ()): ?>
 					<?php the_excerpt(); ?>
 				<?php else: ?>
+					<div class="entrytext">
 					<?php 
-					if (get_the_content()){
-						$content = get_the_content();
-						echo substr($content, 0, 365) . "...";
-					} 
+						if (get_the_content()){
+							$content = get_the_content();
+							echo substr($content, 0, 365) . "...";
+						} 
 					?>
+					</div>
+
 
 				<?php endif; ?>
 				</p>
