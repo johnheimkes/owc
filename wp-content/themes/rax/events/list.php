@@ -23,9 +23,12 @@ if ( !defined('ABSPATH') ) { die('-1'); }
 		<div id="post-<?php the_ID() ?>" class="event" <?php /*post_class('tribe-events-event clearfix event')*/ ?> itemscope itemtype="http://schema.org/Event">
 			<?php the_title('<h4 class="entry-title" itemprop="name"><a href="' . tribe_get_event_link() . '" title="' . the_title_attribute('echo=0') . '" rel="bookmark">', '</a></h4>'); ?>
 			
+			
+			<div class="events-listing-photo">
 	        <?php if ( has_post_thumbnail()) : ?>
 	            <?php the_post_thumbnail('events-listing'); ?>
 	        <?php endif; ?>
+			</div>
 
 			<div class="entry-content" itemprop="description">
 				<?php if ( tribe_is_new_event_day() && !tribe_is_day() ) : ?>
@@ -94,9 +97,12 @@ if ( !defined('ABSPATH') ) { die('-1'); }
 		<div id="post-<?php the_ID() ?>" class="event" <?php /*post_class('tribe-events-event clearfix event')*/ ?> itemscope itemtype="http://schema.org/Event">
 			<?php the_title('<h4 class="entry-title" itemprop="name"><a href="' . tribe_get_event_link() . '" title="' . the_title_attribute('echo=0') . '" rel="bookmark">', '</a></h4>'); ?>
 			
+			<div class="events-listing-photo">
 	        <?php if ( has_post_thumbnail()) : ?>
 	            <?php the_post_thumbnail('events-listing'); ?>
 	        <?php endif; ?>
+			</div>
+
 
 			<div class="entry-content" itemprop="description">
 				<?php if ( tribe_is_new_event_day() && !tribe_is_day() ) : ?>
