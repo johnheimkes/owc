@@ -16,9 +16,9 @@
 </head>
 <body>
 <div id="main-wrapper">
-    <section id="header-wrapper">
+    <section id="header-wrapper group">
         <header id="site-header">
-            <h1 class="logo">The Windmill Project</h1>
+            <h1 class="logo"><a href="<?php site_url() ?>">The Windmill Project</a></h1>
             <div class="supplemental">
                 <ul class="promo">
                     <li>Connecting Families</li>
@@ -30,6 +30,7 @@
             </div><!--.supplemental-->
             
             <?php wp_nav_menu( array('menu' => 'Header-Main' )); ?>
+            
         </header>
     </section>
 

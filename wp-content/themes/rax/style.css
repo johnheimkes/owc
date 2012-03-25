@@ -147,6 +147,8 @@ body {
 }
 
 #main-wrapper {
+    width: 1024px;
+    margin: 0 auto;
     padding-top: 40px;
 }
 
@@ -164,6 +166,8 @@ body {
     width: 120px;
     position: relative;
     border: 1px solid #dac626;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
     border-radius: 15px;
     text-shadow: 0 1px 0 rgba(255,255,255,.65);
 }
@@ -187,6 +191,11 @@ body {
 }
 
 /* HEADER */
+#site-header {
+    margin-bottom: 40px;
+    overflow: hidden;
+}
+
 .logo {
     background: url(assets/images/logo-windmill-project.png) no-repeat;
     width: 313px;
@@ -259,13 +268,9 @@ body {
 ********************************/
 @media only screen and (min-width: 768px) {
     body {
-        font-size: 16px;
+/*        font-size: 16px;*/
     }
     
-    #main-wrapper {
-        max-width: 1024px;
-        margin: 0 auto;
-    }
 }
 
 /*******************************
@@ -273,11 +278,11 @@ body {
 ********************************/
 @media only screen and (max-width: 768px) {
     body {
-        font-size: 14px;
+/*        font-size: 14px;*/
     }
     
     #main-wrapper {
-        width: 100%;
+/*        width: 100%;*/
     }
 }
 
@@ -286,7 +291,7 @@ body {
 ********************************/
 @media only screen and (max-width: 480px) {
     body {
-        font-size: 12px;
+/*        font-size: 12px;*/
     }
     
     #main-wrapper {

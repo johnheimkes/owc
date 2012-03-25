@@ -9,10 +9,13 @@ Template Name: Homepage
 <?php query_posts('post_type=homepage_slider'); ?>
 
 <div class="homepage-sliders">
-<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-<div class="homepage-slider">
-    <div class="thumb"><?php the_post_thumbnail(); ?></div>
-    <div class="text"><?php the_content(); ?></div>
+    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+    <div class="homepage-slider">
+        <div class="image-wrapper"><?php the_post_thumbnail( array(513,345) ); ?></div>
+        <div class="copy-wrapper">
+            <?php the_content(); ?>
+        </div>
+    </div>
     <?php endwhile; endif; ?>
 </div>
 
