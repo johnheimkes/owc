@@ -26,47 +26,47 @@ Template Name: Homepage
  
  <?php edit_post_link('Edit this entry.', '<p>', '</p>'); ?>
 
-<ul class="footer-tiles">
+<ul class="tiles">
     <li>
-        <a href="#" class="footer-tile tile-1">
-            <div class="footer-tile-header">
+        <a href="#" class="tile tile-1">
+            <div class="tile-header">
                 <img src="<?php echo site_url(); ?>/wp-content/uploads/2012/03/287-150x150.jpg" alt="" />
                 <span class="tile-label">About Us</span>
             </div>
-            <p class="footer-tile-body">
+            <p class="tile-body">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <span class="inner-link">More</span>
             </p>
         </a>
     </li>
     <li>
-        <a href="#" class="footer-tile tile-2">
-            <div class="footer-tile-header">
+        <a href="#" class="tile tile-2">
+            <div class="tile-header">
                 <img src="<?php echo site_url(); ?>/wp-content/uploads/2012/03/287-150x150.jpg" alt="" />
                 <span class="tile-label">About Us</span>
             </div>
-            <p class="footer-tile-body">
+            <p class="tile-body">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <span class="inner-link">More</span>
             </p>
         </a>
     </li>
     <li>
-        <a href="#" class="footer-tile tile-3">
-            <div class="footer-tile-header">
+        <a href="#" class="tile tile-3">
+            <div class="tile-header">
                 <img src="<?php echo site_url(); ?>/wp-content/uploads/2012/03/287-150x150.jpg" alt="" />
                 <span class="tile-label">About Us</span>
             </div>
-            <p class="footer-tile-body">
+            <p class="tile-body">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <span class="inner-link">More</span>
             </p>
         </a>
     </li>
     <li>
-        <a href="#" class="footer-tile tile-1">
-            <div class="footer-tile-header">
+        <a href="#" class="tile tile-1">
+            <div class="tile-header">
                 <img src="<?php echo site_url(); ?>/wp-content/uploads/2012/03/287-150x150.jpg" alt="" />
                 <span class="tile-label">About Us</span>
             </div>
-            <p class="footer-tile-body">
+            <p class="tile-body">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <span class="inner-link">More</span>
             </p>
         </a>

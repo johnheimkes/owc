@@ -298,41 +298,41 @@ body {
     Matt's Styles
 ********************************/
 
-.footer-tiles {
+.tiles {
     
 }
 
-.footer-tiles > li {
+.tiles > li {
     float: left;
     padding: 0 10px;
     width: 25%;
 }
 
-.footer-tile {
+.tile {
     color: #333;
     text-decoration: none;
 }
 
-.footer-tile-header {
+.tile-header {
     border-radius: 5px;
     color: #fff;
     padding: 10px;
 }
 
-.tile-1 .footer-tile-header {
+.tile-1 .tile-header {
     background-color: #005aab;
 }
 
-.tile-2 .footer-tile-header {
+.tile-2 .tile-header {
     background-color: #ed1c24;
 }
 
-.tile-3 .footer-tile-header {
+.tile-3 .tile-header {
     background-color: #ffe82c;
     color: #807316;
 }
 
-.footer-tile-header > img {
+.tile-header > img {
     
 }
 
@@ -341,11 +341,11 @@ body {
     text-align: center;
 }
 
-.footer-tile-body {
+.tile-body {
     
 }
 
-.footer-tile-body > a {
+.tile-body > a {
     
 }
 
