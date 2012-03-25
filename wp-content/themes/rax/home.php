@@ -41,11 +41,6 @@ Template Name: Homepage
                     <?php the_post_thumbnail('homepage-buckets'); ?>
                     <span class="tile-label"><?php the_title(); ?></span>
                 </div>
-                <div class="tile-body">
-                    <?php 
-                    $excerpt = get_the_excerpt();
-                    echo homePageExcerpt($excerpt); ?>
-                </div>
             </a>
         </li>
     <?php $idx = ($idx % 3) + 1; endwhile; endif; ?>
