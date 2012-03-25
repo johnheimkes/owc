@@ -904,9 +904,11 @@ body {
     border-radius: 10px;
     text-shadow: 0 1px 0 rgba(255,255,255,.65);
 }
+
 .button.event-link:hover {
 	background-color:#f0d814;
 }
+
 .event-nav {
 	margin-top:7px;
 }
