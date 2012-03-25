@@ -1,13 +1,17 @@
-<?php query_posts('post_type=family_stories&posts_per_page=10'); ?>
-<?php if (have_posts()) : while (have_posts()) : the_post();?>
-<div class="post">
-     <h2 id="post-<?php the_ID(); ?>"><?php the_title();?></h2>
-        <?php if ( has_post_thumbnail()) : ?>
-            <?php the_post_thumbnail(); ?>
-        <?php endif; ?>
-    <div class="entrytext">
-      <?php the_excerpt('<p class="serif">Read the rest of this page &raquo;</p>'); ?>
+<?php $args = array( 'post_type' => 'family_stories', 'posts_per_page' => 10) ?>
+<?php $my_theme_query = new WP_Query( $args ); 
+
+while ( $my_theme_query->have_posts() ) : $my_theme_query->the_post();
+?>
+    <div class="post">
+         <h2 id="post-<?php the_ID(); ?>"><?php the_title();?></h2>
+            <?php if ( has_post_thumbnail()) : ?>
+                <?php the_post_thumbnail(); ?>
+            <?php endif; ?>
+        <div class="entrytext">
+          <?php the_excerpt('<p class="serif">Read the rest of this page &raquo;</p>'); ?>
+        </div>
     </div>
-</div>
-<?php endwhile; endif; ?>
-<?php edit_post_link('Edit this entry.', '<p>', '</p>'); ?>
+<?php endwhile;
+// Reset Post Data
+wp_reset_postdata(); ?>
