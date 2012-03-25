@@ -9,16 +9,13 @@ if ( function_exists ('register_sidebar')) {
 
 if ( function_exists( 'add_image_size' ) ) { 
     add_image_size( 'homepage-carousel', 513, 345, true );
-    add_image_size( 'homepage-buckets', 180, 180, true);
+    add_image_size( 'homepage-buckets', 180, 180, true );
     add_image_size( 'events-sidebar', 58, 58, true );
     add_image_size( 'events-listing', 150, 150, true );
     add_image_size( 'events-stories-single', 320, 200, true );
     add_image_size( 'page-image', 340, 200, true );
     add_image_size( 'stories-listing', 145, 95, true );
 }
-
- 
-
 
 add_action('init', 'add_excerpt_to_pages');
 function add_excerpt_to_pages()
@@ -158,32 +155,37 @@ add_shortcode( 'contact-email', 'contact_email' );
 
 
 function faqs_short( ){
-    get_template_part( 'loops/loop', 'faqs' );
+    return get_template_part_without_echo( 'loops/loop', 'faqs' );
 }
 add_shortcode( 'faqs-list', 'faqs_short' );
 
 function featured_quote( ){
-    get_template_part( 'loops/loop', 'quote' );
+    return get_template_part_without_echo( 'loops/loop', 'quote' );
 }
 add_shortcode( 'quote', 'featured_quote' );
 
 function family_stories_short( ){
-    get_template_part( 'loops/loop', 'family-stories' );
+    return get_template_part_without_echo( 'loops/loop', 'family-stories' );
 }
 add_shortcode( 'family-stories', 'family_stories_short' );
 
 function articles_short( ){
-    get_template_part( 'loops/loop', 'articles' );
+    return get_template_part_without_echo( 'loops/loop', 'articles' );
 }
 add_shortcode( 'articles-list', 'articles_short' );
 
 add_action("admin_menu", "setup_theme_admin_menus");
 
+function get_template_part_without_echo($slug, $name) {
+    ob_start();
+    get_template_part($slug, $name);
+    $content = ob_get_contents();
+    ob_end_clean();
+    return $content;
+}
+
 function setup_theme_admin_menus() {  
-    // We will write the function contents very soon.  
-    // add_submenu_page('index.php', 'Site Options', 'Site Options', 'manage_options', 'site_options', 'theme_front_page_settings');
     add_menu_page('Site Options', 'Site Options', 'administrator', 'site-options', 'theme_front_page_settings', null, 1); 
-    // ($parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function)
 }
 
 function theme_front_page_settings() {
@@ -258,7 +260,7 @@ function theme_front_page_settings() {
                         <input type="text" name="facebook_profile" id="facebook_profile" value="<?php echo $get_facebook_prof; ?>" />
                     </p>
                     <p>
-                        <label class="admin-label" for="slide_interval">Homepage Slide interval</label>
+                        <label class="admin-label" for="slide_interval">Homepage Slide interval (seconds)</label>
                         <input type="text" name="slide_interval" id="slide_interval" value="<?php echo $get_homepage_int; ?>" />
                     </p>
                 </fieldset>
