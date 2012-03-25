@@ -43,8 +43,11 @@ if ( !defined('ABSPATH') ) { die('-1'); }
 				<?php if (has_excerpt ()): ?>
 					<?php the_excerpt(); ?>
 				<?php else: ?>
-					<?php $content = get_the_content();
-					echo substr($content, 0, 365) . "..."; 
+					<?php 
+					if (get_the_content()){
+						$content = get_the_content();
+						echo substr($content, 0, 365) . "...";
+					} 
 					?>
 				<?php endif; ?>
 				</p>
@@ -118,8 +121,11 @@ if ( !defined('ABSPATH') ) { die('-1'); }
 				<?php if (has_excerpt ()): ?>
 					<?php the_excerpt(); ?>
 				<?php else: ?>
-					<?php $content = get_the_content();
-					echo substr($content, 0, 365) . "..."; 
+					<?php 
+					if (get_the_content()){
+						$content = get_the_content();
+						echo substr($content, 0, 365) . "...";
+					} 
 					?>
 
 				<?php endif; ?>
