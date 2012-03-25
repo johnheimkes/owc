@@ -135,6 +135,11 @@ function create_family_stories() {
     );
 }
 
+function faqs_short( ){
+    get_template_part( 'loops/loop', 'faqs' );
+}
+add_shortcode( 'faqs-list', 'faqs_short' );
+
 function family_stories_short( ){
     get_template_part( 'loops/loop', 'family-stories' );
 }
@@ -223,6 +228,12 @@ function customAdmin() {
           <!-- /end custom adming css -->';
 }
 add_action('admin_head', 'customAdmin');
+
+function homePageExcerpt( $src ) {
+    $blank_src = strip_tags($src);
+    $new_src = "<p>".$blank_src."  <span class='read-more'>More</span></p>";
+    return $new_src;
+}
 
 if (function_exists('add_theme_support')) {
     add_theme_support('post-thumbnails');
