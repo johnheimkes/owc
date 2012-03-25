@@ -270,9 +270,32 @@ body {
 
 .carousel .slide .copy-wrapper {
     float: left;
+    height: 345px;
     width: 511px;
     background: #005aab;
     color: #ffffff;
+    padding: 115px 50px 30px;
+}
+
+.carousel .slide h2 {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+.carousel .slide p {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.carousel .slide .link {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.carousel .slide .link:hover {
+    text-decoration: underline;
 }
 
 /* PAGE CONTENT */
