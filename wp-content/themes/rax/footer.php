@@ -2,7 +2,7 @@
     <footer id="site-footer" class="site-footer group">
         <?php wp_nav_menu( array('menu' => 'Footer' )); ?>
         <div class="sponsors">
-            <a href="#" class="sponsor"><img src="<?php echo site_url(); ?>/wp-content/themes/rax/assets/images/leavealegacy.png" alt="" /></a>
+            <a href="http://www.leavealegacy.org/" class="sponsor"><img src="<?php echo site_url(); ?>/wp-content/themes/rax/assets/images/leavealegacy.png" alt="" /></a>
             <a href="http://www.uwdp.org/" class="sponsor"><img src="<?php echo site_url(); ?>/wp-content/themes/rax/assets/images/unitedway.png" alt="" /></a>
             <a href="https://www.facebook.com/groups/189064897805790/" class="sponsor"><img src="<?php echo site_url(); ?>/wp-content/themes/rax/assets/images/facebook.png" alt="" /></a>
         </div>

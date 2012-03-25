@@ -9,7 +9,7 @@ if ( function_exists ('register_sidebar')) {
 
 if ( function_exists( 'add_image_size' ) ) { 
     add_image_size( 'homepage-carousel', 513, 345, true );
-    add_image_size( 'homepage-buckets', 150, 150, true);
+    add_image_size( 'homepage-buckets', 180, 180, true);
     add_image_size( 'events-sidebar', 58, 58, true );
     add_image_size( 'events-listing', 150, 150, true );
     add_image_size( 'events-stories-single', 320, 200, true );
