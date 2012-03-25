@@ -455,9 +455,20 @@ body {
 }
 
 /* ---------------------------------------------------------------------
- Sidebar
+ Links Page
 ------------------------------------------------------------------------ */
+.linkcat {
+    list-style: none;
+    margin-bottom: 25px;
+}
 
+#page-content .linkcat h2 {
+    margin-bottom: 8px;
+}
+
+.linkcat > ul {
+    padding-left: 15px;
+}
 
 /* ---------------------------------------------------------------------
  User Entered Content
