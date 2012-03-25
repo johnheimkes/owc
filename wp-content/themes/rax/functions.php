@@ -9,7 +9,7 @@ if ( function_exists ('register_sidebar')) {
 
 if ( function_exists( 'add_image_size' ) ) { 
     add_image_size( 'homepage-carousel', 513, 345 );
-    add_image_size( 'homepage-buckets', 220, 120 );
+    add_image_size( 'homepage-buckets', 150, 150);
     add_image_size( 'events-sidebar', 58, 58 );
     add_image_size( 'events-listing', 150, 150 );
     add_image_size( 'events-stories-single', 320, 200 );
@@ -94,13 +94,9 @@ function create_quotes() {
             'public' => true,
             'supports' => array(
                     'title',
-                    'excerpt',
                     'editor',
-                    'thumbnail',
-                    'revisions',
-                    'categories'
-                ),
-            'taxonomies' => array('category', 'post_tag'),
+                    'revisions'
+            ),
             'has_archive' => false,
             'rewrite' => array('slug' => 'windmill-quotes')
         )
