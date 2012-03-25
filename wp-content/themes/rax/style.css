@@ -861,6 +861,7 @@ body {
 /* Alex's Styles */
 .event {
 	overflow:hidden;
+	margin-bottom:50px;
 }
 
 .events-listing-photo {
