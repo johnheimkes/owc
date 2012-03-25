@@ -90,9 +90,14 @@ function create_family_stories() {
 }
 
 function family_stories_short( ){
- get_template_part( 'loops/loop', 'family-stories' );
+    get_template_part( 'loops/loop', 'family-stories' );
 }
 add_shortcode( 'family-stories', 'family_stories_short' );
+
+function articles_short( ){
+    get_template_part( 'loops/loop', 'articles' );
+}
+add_shortcode( 'articles-list', 'articles_short' );
 
 add_action("admin_menu", "setup_theme_admin_menus");
 
