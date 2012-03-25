@@ -10,6 +10,12 @@
 if ( !defined('ABSPATH') ) { die('-1'); }
 
 ?>
+<script>
+
+jQuery('#menu-item-52').addClass("current-menu-item");
+console.log(jQuery('#menu-item-52'));
+
+</script>
 <section class="events-listing">
 	
 	<div id="tribe-events-loop" class="tribe-events-events post-list clearfix">
