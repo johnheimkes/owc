@@ -2,7 +2,7 @@
 Global JavaScript & jQuery
  
 Target Browsers: All
-Authors: Chris Bennett
+Authors: Chris Bennett, Merne William
 ------------------------------------------------------------------------ */
  
 var NERD = NERD || {};
@@ -55,4 +55,16 @@ jQuery(function($) {
     };
 
     NERD.Carousel.init();
+
+    
+    if($('.dropdown-container').length > 0) {
+        $('.dropdown-title').click(function(){
+            $(this).toggleClass('open').siblings('.dropdown-content').slideToggle();
+        });
+    }
+    if($('.linkcat').length > 0) {
+        $('.linkcat h2').click(function(){
+            $(this).toggleClass('open').siblings('.blogroll').slideToggle();
+        });
+    }
 });
