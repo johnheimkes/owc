@@ -889,10 +889,19 @@ white-space: nowrap;
     text-align: left;
 }
 
+.dig-in {
+    margin-top: -20px;
+}
+
+.tribe-events-month-nav a, .tribe-events-nav a, .back a, .eventsListWidget .dig-in a, .eventsAdvancedListWidget .dig-in a {
+    color: #ED1C24;
+    font-weight: 400;
+}
+
 /* Alex's Styles */
 .event {
 	overflow:hidden;
-	margin-bottom:50px;
+	margin-bottom:20px;
 }
 
 .events-listing-photo {
