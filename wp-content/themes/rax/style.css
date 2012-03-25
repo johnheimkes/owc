@@ -82,7 +82,7 @@ html {
 */
 
 /*Bauhaus Font-Face Declarations*/
-@font-face {
+/*@font-face {
     font-family: 'BauhausRegular';
     src: url('assets/fonts/bauhaus-bold-webfont.eot');
     src: url('assets/fonts/bauhaus-bold-webfont.eot?#iefix') format('embedded-opentype'),
@@ -116,7 +116,7 @@ html {
     font-weight: normal;
     font-style: normal;
 }
-
+*/
 
 /* Clearfix */
 .group:before,
@@ -154,6 +154,7 @@ body {
 /* BUTTONS */
 .button {
     font-size: 15px;
+    font-weight: 400;
     display: block;
     height: 40px;
     width: 100px;
