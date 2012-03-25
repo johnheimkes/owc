@@ -1046,3 +1046,9 @@ white-space: nowrap;
 a {
     color: #357ABE;
 }
+
+.wpcf7-not-valid-tip {
+    left: 7px !important;
+    top: 1px !important;
+    width: 350px !important;
+}
