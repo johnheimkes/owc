@@ -52,6 +52,32 @@ function create_homepage_sliders() {
     );
 }
 
+add_action( 'init', 'create_faqs' );
+function create_faqs() {
+    register_post_type( 'faqs',
+        array(
+            'labels' => array(
+                'name' => __( 'FAQs' ),
+                'singular_name' => __( 'FAQs' ),
+                'add_new' => __( 'Add New' ),
+                'add_new_item' => __( 'Add New FAQ' ),
+                'edit' => __( 'Edit' ),
+                'edit_item' => __( 'Edit FAQ' ),
+                'new_item' => __( 'New FAQ' ),
+            ),
+            'public' => true,
+            'supports' => array(
+                    'title',
+                    'editor',
+                    'thumbnail',
+                    'revisions'
+                ),
+            'has_archive' => false,
+            'rewrite' => array('slug' => 'faqs')
+        )
+    );
+}
+
 add_action( 'init', 'create_quotes' );
 function create_quotes() {
     register_post_type( 'windmill_quotes',
