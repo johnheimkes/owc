@@ -141,6 +141,7 @@ html {
 }
 
 body {
+	background: #fff url('assets/images/body_bg.png') 0 0 repeat;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
 }
@@ -161,15 +162,27 @@ body {
     text-align: center;
     line-height: 40px;
     width: 120px;
+    position: relative;
 }
 
 .button:hover {
     color: #4d4d4d;
 }
 
+.button:active {
+	top: 1px;
+}
+
 .button.donate {
     padding-left: 15px;
     background: url(assets/images/icon-tulip.png) no-repeat 7px 8px #ffe82c;
+    text-shadow: 0 1px 0 rgba(255,255,255,.65);
+    border: 1px solid #dac626;
+	border-radius: 15px;
+}
+
+.button.donate:hover {
+	background-color: #f6e02a;
 }
 
 /* HEADER */
@@ -201,7 +214,7 @@ body {
 }
 
 .supplemental .promo li {
-    font-size: 19px;
+    font-size: 18px;
     color: #87898a;
     float: left;
     margin-left: 25px;
