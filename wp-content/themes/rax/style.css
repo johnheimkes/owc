@@ -214,13 +214,26 @@ body {
 .menu-header-main-container {
     overflow: hidden;
     float: left;
-    width: 615px;
 }
 
-.menu .menu-item {
-    width: 90px;
+#menu-header-main .menu-item {
     float: left;
     text-align: center;
+    margin-left: 2px;
+}
+
+#menu-header-main .menu-item a {
+    color: #ffffff;
+    width: 90px;
+    height: 32px;
+    line-height: 32px;
+    background-color: #7ea7d9;
+    text-decoration: none;
+    display: block;
+}
+
+#menu-header-main .menu-item a:hover {
+    background-color: #357abe;
 }
 
 /* PAGE CONTENT */
