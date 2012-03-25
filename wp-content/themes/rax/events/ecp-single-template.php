@@ -26,6 +26,5 @@ if ( !defined('ABSPATH') ) { die('-1'); }
 		<?php if(tribe_get_option('showComments','no') == 'yes'){ comments_template();} ?>
 	</div><!-- #content -->
 </div><!--#container-->
-<?php get_sidebar(); ?>
 <?php tribe_events_after_html() ?>
 <?php get_footer(); ?>
