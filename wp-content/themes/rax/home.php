@@ -6,13 +6,13 @@ Template Name: Homepage
 
 <?php get_header(); ?>
 
-<?php query_posts('post_type=homepage_slider&showposts=1'); ?>
+<?php query_posts('post_type=homepage_slider&showposts=3'); ?>
 
-<div class="carousel">
+<div class="carousel" id="js-featured-carousel">
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
     <div class="slide">
-        <div class="image-wrapper"><?php the_post_thumbnail('homepage-carousel'); ?></div>
-        <div class="copy-wrapper">
+        <div class="slide-image"><?php the_post_thumbnail('homepage-carousel'); ?></div>
+        <div class="slide-content">
             <?php the_content(); ?>
         </div>
     </div>

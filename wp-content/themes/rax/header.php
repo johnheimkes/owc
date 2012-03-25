@@ -14,12 +14,13 @@
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
     <?php wp_head(); ?>
     <script type="text/javascript" src="<?php echo site_url(); ?>/wp-content/themes/rax/assets/scripts/respond.js"></script>
+    <script type="text/javascript" src="<?php echo site_url(); ?>/wp-content/themes/rax/assets/scripts/global.js"></script>
 </head>
 <body>
 <div id="main-wrapper">
     <section id="header-wrapper group">
         <header id="site-header">
-            <h1 class="logo"><a href="<?php site_url() ?>">The Windmill Project</a></h1>
+            <h1 class="logo"><a href="<?php echo site_url(); ?>">The Windmill Project</a></h1>
             <div class="supplemental">
                 <ul class="promo">
                     <li>Connecting Families</li>
