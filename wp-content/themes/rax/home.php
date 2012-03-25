@@ -13,7 +13,9 @@ Template Name: Homepage
     <div class="slide<?php echo $ct == 0 ? ' active' : ''; ?>">
         <div class="slide-image"><?php the_post_thumbnail('homepage-carousel'); ?></div>
         <div class="slide-content">
-            <?php the_content(); ?>
+			<div class="slide-copy">
+				<?php the_content(); ?>
+			</div>
         </div>
     </div>
     <?php $ct++; endwhile; endif; ?>
