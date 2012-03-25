@@ -367,6 +367,7 @@ body {
 /* PAGE CONTENT */
 #page-content {
     clear: both;
+    margin-bottom: 40px;
 }
 
 #page-content h2 {
@@ -380,10 +381,26 @@ body {
     color: #000000;
 }
 
+#page-content > .post {
+    float: left;
+    width: 80%;
+    padding-right: 25px;
+}
+
+#page-content .sidebar {
+    float: left;
+    width: 20%;
+}
+
 /* ---------------------------------------------------------------------
  User Entered Content
 
 ------------------------------------------------------------------------ */
+.entrytext {
+    font-size: 15px;
+    line-height: 1.3;
+}
+
 .entrytext a {
     font-weight: bold;
 }
@@ -417,11 +434,12 @@ body {
 }
 
 .entrytext h2 {
-    font-size: 18px;
+    font-size: 18px !important;
 }
 
 .entrytext h3 {
     font-size: 16px;
+    font-weight: bold;
 }
 
 .entrytext h4 {
