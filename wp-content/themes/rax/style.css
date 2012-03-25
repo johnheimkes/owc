@@ -428,3 +428,36 @@ body {
     font-size: 14px;
     color: #00315D;
 }
+
+
+
+/* Alex's Styles */
+.event {
+	overflow:hidden;
+}
+.events-listing-photo {
+	float:left;
+	width:150px;
+	height:150px;
+}
+.event-content {
+	float:left;
+	width:819px;
+	margin-left:15px;
+}
+.events-heading {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.events-listing h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 13px;
+	
+}
+.event h4 {
+	font-size:16px;
+	font-weight:500;
+	margin-bottom:12px;
+}

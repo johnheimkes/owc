@@ -10,7 +10,7 @@
 if ( !defined('ABSPATH') ) { die('-1'); }
 
 ?>
-<div id="tribe-events-content" class="upcoming">
+<section class="events-listing">
 	
 	<div id="tribe-events-loop" class="tribe-events-events post-list clearfix">
 	<?php query_posts(array('tribe_events_cat' => 'windmill'));?>
@@ -20,8 +20,8 @@ if ( !defined('ABSPATH') ) { die('-1'); }
     <?php while ( have_posts() ) : the_post(); ?>
         <?php global $more; $more = false; ?>
 		<?php  if(time() < strtotime(tribe_get_end_date( null, false, 'm/d/Y h:i' ))):?>
-		<div id="post-<?php the_ID() ?>" class="event" <?php /*post_class('tribe-events-event clearfix event')*/ ?> itemscope itemtype="http://schema.org/Event">
-			<?php the_title('<h4 class="entry-title" itemprop="name"><a href="' . tribe_get_event_link() . '" title="' . the_title_attribute('echo=0') . '" rel="bookmark">', '</a></h4>'); ?>
+		<div id="post-<?php the_ID() ?>" class="event" itemscope itemtype="http://schema.org/Event">
+			<?php the_title('<h4 itemprop="name"><a href="' . tribe_get_event_link() . '" title="' . the_title_attribute('echo=0') . '" rel="bookmark">', '</a></h4>'); ?>
 			
 			
 			<div class="events-listing-photo">
@@ -30,7 +30,7 @@ if ( !defined('ABSPATH') ) { die('-1'); }
 	        <?php endif; ?>
 			</div>
 
-			<div class="entry-content" itemprop="description">
+			<div class="event-content" itemprop="description">
 				<?php if ( tribe_is_new_event_day() && !tribe_is_day() ) : ?>
 					<h5 class="event-day"><?php echo tribe_get_start_date( null, false, 'm/d/Y h:i' ); ?> to <?php echo tribe_get_end_date( null, false, 'h:i' ); ?></h5>
 				<?php endif; ?>
@@ -39,7 +39,7 @@ if ( !defined('ABSPATH') ) { die('-1'); }
 					
 				<?php endif; ?>
 				<h5 class="event-city"><?php if(tribe_get_city()){ echo tribe_get_city() . ", " . tribe_get_state();} ?></h5>
-				
+				<p>
 				<?php if (has_excerpt ()): ?>
 					<?php the_excerpt(); ?>
 				<?php else: ?>
@@ -47,6 +47,7 @@ if ( !defined('ABSPATH') ) { die('-1'); }
 					echo substr($content, 0, 255) . "..."; 
 					?>
 				<?php endif; ?>
+				</p>
 				<ul class="event-nav">
 					<li><a class="button event-link" href="<?php echo tribe_get_event_link(); ?>">Learn more</a></li>
 				</ul>
@@ -94,8 +95,8 @@ if ( !defined('ABSPATH') ) { die('-1'); }
     <?php while ( have_posts() ) : the_post(); ?>
         <?php global $more; $more = false; ?>
 		<?php  if(time() < strtotime(tribe_get_end_date( null, false, 'm/d/Y h:i' ))):?>
-		<div id="post-<?php the_ID() ?>" class="event" <?php /*post_class('tribe-events-event clearfix event')*/ ?> itemscope itemtype="http://schema.org/Event">
-			<?php the_title('<h4 class="entry-title" itemprop="name"><a href="' . tribe_get_event_link() . '" title="' . the_title_attribute('echo=0') . '" rel="bookmark">', '</a></h4>'); ?>
+		<div id="post-<?php the_ID() ?>" class="event" itemscope itemtype="http://schema.org/Event">
+			<?php the_title('<h4 itemprop="name"><a href="' . tribe_get_event_link() . '" title="' . the_title_attribute('echo=0') . '" rel="bookmark">', '</a></h4>'); ?>
 			
 			<div class="events-listing-photo">
 	        <?php if ( has_post_thumbnail()) : ?>
@@ -104,7 +105,7 @@ if ( !defined('ABSPATH') ) { die('-1'); }
 			</div>
 
 
-			<div class="entry-content" itemprop="description">
+			<div class="event-content" itemprop="description">
 				<?php if ( tribe_is_new_event_day() && !tribe_is_day() ) : ?>
 					<h5 class="event-day"><?php echo tribe_get_start_date( null, false, 'm/d/Y h:i' ); ?> to <?php echo tribe_get_end_date( null, false, 'h:i' ); ?></h5>
 				<?php endif; ?>
@@ -113,14 +114,16 @@ if ( !defined('ABSPATH') ) { die('-1'); }
 					
 				<?php endif; ?>
 				<h5 class="event-city"><?php if(tribe_get_city()){ echo tribe_get_city() . ", " . tribe_get_state();} ?></h5>
-				
+				<p>
 				<?php if (has_excerpt ()): ?>
 					<?php the_excerpt(); ?>
 				<?php else: ?>
 					<?php $content = get_the_content();
 					echo substr($content, 0, 255) . "..."; 
 					?>
+
 				<?php endif; ?>
+				</p>
 				<ul class="event-nav">
 					<li><a class="button event-link" href="<?php echo tribe_get_event_link(); ?>">Learn more</a></li>
 				</ul>
@@ -189,4 +192,4 @@ if ( !defined('ABSPATH') ) { die('-1'); }
 	<?php if ( !empty($hasPosts) && function_exists('tribe_get_ical_link') ): ?>
 		<a title="<?php esc_attr_e('iCal Import', 'tribe-events-calendar') ?>" class="ical" href="<?php echo tribe_get_ical_link(); ?>"><?php _e('iCal Import', 'tribe-events-calendar') ?></a>
 	<?php endif; ?>
-</div>
+</section>
