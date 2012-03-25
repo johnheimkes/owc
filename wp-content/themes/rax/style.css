@@ -264,8 +264,19 @@ body {
 
 
 /* CAROUSEL */
+.carousel {
+    position: relative;
+    height: 345px;
+}
+
+.carousel .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 .carousel .slide .slide-image {
     float: left;
+
 }
 
 .carousel .slide .slide-content {
