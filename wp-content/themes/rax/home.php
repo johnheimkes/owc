@@ -24,7 +24,7 @@ Template Name: Homepage
     <ul>
         <?php for($i=0;$i<$ct;$i++): ?>
         <li class="nav">
-            <a href="#">&#10625;</a>
+            <a href="#">&#8226;</a>
         </li>
         <?php endfor; ?>
     </ul>
