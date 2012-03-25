@@ -18,15 +18,15 @@ Template Name: Homepage
     </div>
     <?php $ct++; endwhile; endif; ?>
 </div>
-<nav id="carousel-nav">
+<div class="carousel-nav">
     <ul>
         <?php for($i=0;$i<$ct;$i++): ?>
         <li class="nav">
-            <a href="#">*</a>
+            <a href="#">&#10625;</a>
         </li>
         <?php endfor; ?>
     </ul>
-</nav>
+</div>
 
 <ul class="tiles">
     <?php $idx=1; foreach(array('about-us', 'events', 'stories', 'contact-us') as $name): ?>

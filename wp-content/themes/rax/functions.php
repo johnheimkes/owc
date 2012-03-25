@@ -141,12 +141,12 @@ function faqs_short( ){
 add_shortcode( 'faqs-list', 'faqs_short' );
 
 function featured_quote( ){
-    get_template_part( 'loops/loop', 'faqs' );
+    get_template_part( 'loops/loop', 'quote' );
 }
 add_shortcode( 'quote', 'featured_quote' );
 
 function family_stories_short( ){
-    get_template_part( 'loops/loop', 'quote' );
+    get_template_part( 'loops/loop', 'family-stories' );
 }
 add_shortcode( 'family-stories', 'family_stories_short' );
 
