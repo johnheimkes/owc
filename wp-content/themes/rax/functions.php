@@ -3,6 +3,12 @@ define('ASSETS_RELATIVE_PATH', '/assets/');
 define('ASSETS_DIR', get_template_directory_uri() . ASSETS_RELATIVE_PATH);
 include 'static/Site.php';
 
+add_action('init', 'add_excerpt_to_pages');
+function add_excerpt_to_pages()
+{
+    add_post_type_support( 'page', 'excerpt' );
+}
+
 add_action( 'init', 'create_homepage_sliders' );
 function create_homepage_sliders() {
     register_post_type( 'homepage_slider',
