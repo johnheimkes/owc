@@ -147,8 +147,11 @@ function contact_name( ){
 add_shortcode('contact-name', 'contact_name');
 
 
-function contact_email( ){
-    $get_contact_email = get_option("theme_option_email");  
+function contact_email( $args ){
+    $get_contact_email = get_option("theme_option_email");
+    if ($args['use_mailto'] === 'true') {
+        $get_contact_email = '<a href="mailto:' . $get_contact_email . '">' . $get_contact_email . '</a>';
+    }
     return $get_contact_email;
 }
 add_shortcode( 'contact-email', 'contact_email' );
