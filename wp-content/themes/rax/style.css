@@ -1011,9 +1011,9 @@ white-space: nowrap;
 }
 
 .links-list {
-    width: 77%;
     float: left;
-    margin-right: 30px;
+    padding-right: 25px;
+    width: 78%;
 }
 
 .blogroll a {
