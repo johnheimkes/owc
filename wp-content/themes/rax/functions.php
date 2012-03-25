@@ -8,13 +8,13 @@ if ( function_exists ('register_sidebar')) {
 }
 
 if ( function_exists( 'add_image_size' ) ) { 
-    add_image_size( 'homepage-carousel', 513, 345 );
-    add_image_size( 'homepage-buckets', 150, 150);
-    add_image_size( 'events-sidebar', 58, 58 );
-    add_image_size( 'events-listing', 150, 150 );
-    add_image_size( 'events-stories-single', 320, 200 );
-    add_image_size( 'page-image', 340, 200 );
-    add_image_size( 'stories-listing', 145, 95 );
+    add_image_size( 'homepage-carousel', 513, 345, true );
+    add_image_size( 'homepage-buckets', 150, 150, true);
+    add_image_size( 'events-sidebar', 58, 58, true );
+    add_image_size( 'events-listing', 150, 150, true );
+    add_image_size( 'events-stories-single', 320, 200, true );
+    add_image_size( 'page-image', 340, 200, true );
+    add_image_size( 'stories-listing', 145, 95, true );
 }
 
  
@@ -289,6 +289,18 @@ function homePageExcerpt( $src ) {
 function strip_html_tags( $src ) {
     $blank_src = strip_tags($src);
     return $blank_src;
+}
+
+function excerpt($limit) {
+  $excerpt = explode(' ', get_the_excerpt(), $limit);
+  if (count($excerpt)>=$limit) {
+    array_pop($excerpt);
+    $excerpt = implode(" ",$excerpt).'...';
+  } else {
+    $excerpt = implode(" ",$excerpt);
+  }	
+  $excerpt = preg_replace('`\[[^\]]*\]`','',$excerpt);
+  return $excerpt;
 }
 
 if (function_exists('add_theme_support')) {
