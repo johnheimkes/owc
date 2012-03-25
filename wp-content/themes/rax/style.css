@@ -279,6 +279,7 @@ body {
 .carousel {
     position: relative;
     height: 345px;
+    margin-bottom: 5px;
 }
 
 .carousel .slide {
@@ -288,7 +289,6 @@ body {
 }
 .carousel .slide .slide-image {
     float: left;
-
 }
 
 .carousel .slide .slide-content {
@@ -297,7 +297,7 @@ body {
     width: 511px;
     background: #005aab;
     color: #ffffff;
-    padding: 115px 50px 30px;
+    padding: 80px 50px 30px;
 }
 
 .carousel .slide h2 {
@@ -327,6 +327,36 @@ body {
 
 .carousel .slide {
     display: none;
+}
+
+.carousel-nav {
+    text-align: center;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #ADADAD;
+    margin: 0 15px 15px;
+}
+
+.carousel-nav ul {
+    display: inline-block;
+}
+
+.carousel-nav li {
+    float: left;
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+.carousel-nav li:first-child {
+    margin-left: 0;
+}
+
+.carousel-nav li a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.carousel-nav li.active a {
+    color: #ED1C24;
 }
 
 /* PAGE CONTENT */
