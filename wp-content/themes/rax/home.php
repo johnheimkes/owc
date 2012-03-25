@@ -11,7 +11,7 @@ Template Name: Homepage
 <div class="carousel">
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
     <div class="slide">
-        <div class="image-wrapper"><?php the_post_thumbnail( array(513,345) ); ?></div>
+        <div class="image-wrapper"><?php the_post_thumbnail('homepage-carousel'); ?></div>
         <div class="copy-wrapper">
             <?php the_content(); ?>
         </div>
