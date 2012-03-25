@@ -36,11 +36,13 @@ Template Name: Homepage
         <li>
             <a href="<?php echo site_url(); ?>" class="tile tile-<?php echo $idx; ?>">
                 <div class="tile-header">
-                    <?php the_post_thumbnail(); ?>
+                    <?php the_post_thumbnail('homepage-buckets'); ?>
                     <span class="tile-label"><?php the_title(); ?></span>
                 </div>
                 <div class="tile-body">
-                    <?php the_excerpt(); ?>
+                    <?php 
+                    $excerpt = get_the_excerpt();
+                    echo homePageExcerpt($excerpt); ?>
                 </div>
             </a>
         </li>
