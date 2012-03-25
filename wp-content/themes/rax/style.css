@@ -419,7 +419,7 @@ body {
 
 .carousel-nav li a {
     text-decoration: none;
-    color: #000000;
+    color: #ccc;
 }
 
 .carousel-nav li.active a {
@@ -685,7 +685,7 @@ body {
 }
 
 /*******************************
-    Matt's Styles
+    Home page tiles
 ********************************/
 
 .tiles {
@@ -790,6 +790,10 @@ body {
     font-size: 14px;
     color: #00315D;
 }
+
+/*******************************
+    Footer
+********************************/
 
 .site-footer {
     border-top: 6px solid #357abe;
