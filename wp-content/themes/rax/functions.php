@@ -135,18 +135,39 @@ function create_family_stories() {
     );
 }
 
+function contact_address( ){
+    $get_contact_addy = get_option("theme_option_address");
+    $get_contact_city = get_option("theme_option_city");
+    $total_address    = $get_contact_addy."<br />".$get_contact_city;
+    echo $total_address;
+}
+add_shortcode( 'contact-address', 'contact_address' );
+
+function contact_phone( ){
+    $get_contact_phone   = get_option("theme_option_phone");
+    echo $get_contact_phone;
+}
+add_shortcode( 'contact-phone', 'contact_phone' );
+
+function contact_email( ){
+    $get_contact_email = get_option("theme_option_email");  
+    echo $get_contact_email;
+}
+add_shortcode( 'contact-email', 'contact_email' );
+
+
 function faqs_short( ){
     get_template_part( 'loops/loop', 'faqs' );
 }
 add_shortcode( 'faqs-list', 'faqs_short' );
 
 function featured_quote( ){
-    get_template_part( 'loops/loop', 'faqs' );
+    get_template_part( 'loops/loop', 'quote' );
 }
 add_shortcode( 'quote', 'featured_quote' );
 
 function family_stories_short( ){
-    get_template_part( 'loops/loop', 'quote' );
+    get_template_part( 'loops/loop', 'family-stories' );
 }
 add_shortcode( 'family-stories', 'family_stories_short' );
 
@@ -159,8 +180,8 @@ add_action("admin_menu", "setup_theme_admin_menus");
 
 function setup_theme_admin_menus() {  
     // We will write the function contents very soon.  
-    add_submenu_page('themes.php', 'Theme Options', 'Theme Options', 'manage_options', 'theme_options', 'theme_front_page_settings');
-    
+    // add_submenu_page('index.php', 'Site Options', 'Site Options', 'manage_options', 'site_options', 'theme_front_page_settings');
+    add_menu_page('Site Options', 'Site Options', 'administrator', 'site-options', 'theme_front_page_settings', null, 1); 
     // ($parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function)
 }
 
@@ -170,11 +191,14 @@ function theme_front_page_settings() {
         wp_die('You do not have sufficient permissions to access this page.');  
     }
     
-    $get_contact_email  = get_option("theme_option_email");  
-    $get_contact_phone  = get_option("theme_option_phone");
-    $get_facebook_prof  = get_option("theme_option_facebook_prof");
-    $get_homepage_int   = get_option("theme_option_homepage_int");
+    $get_contact_email   = get_option("theme_option_email");  
+    $get_contact_phone   = get_option("theme_option_phone");
+    $get_contact_address = get_option("theme_option_address");
+    $get_contact_city    = get_option("theme_option_city");
     
+    $get_facebook_prof   = get_option("theme_option_facebook_prof");
+    $get_homepage_int    = get_option("theme_option_homepage_int");
+
     ?>
     
     <div class="wrap">  
@@ -191,6 +215,14 @@ function theme_front_page_settings() {
                     <p>
                         <label class="admin-label" for="contact_phone">Contact Phone</label>
                         <input type="text" name="contact_phone" id="contact_phone" value="<?php echo $get_contact_phone; ?>" />
+                    </p>
+                    <p>
+                        <label class="admin-label" for="contact_address">Contact Address</label>
+                        <input type="text" name="contact_address" id="contact_address" value="<?php echo $get_contact_address; ?>" />
+                    </p>
+                    <p>
+                        <label class="admin-label" for="contact_city">Contact City, State &amp; Zip</label>
+                        <input type="text" name="contact_city" id="contact_city" value="<?php echo $get_contact_city; ?>" />
                     </p>
                 </fieldset>
                 <fieldset>
@@ -213,13 +245,19 @@ function theme_front_page_settings() {
     
     <?php
     if (isset($_POST["update_settings"])) {  
-        $contact_email = esc_attr($_POST["contact_email"]);
-        $contact_phone = esc_attr($_POST["contact_phone"]);
-        $facebook_prof = esc_attr($_POST["facebook_profile"]);
-        $homepage_int  = esc_attr($_POST["slide_interval"]);
+        $contact_email      = esc_attr($_POST["contact_email"]);
+        $contact_phone      = esc_attr($_POST["contact_phone"]);
+        $contact_address    = esc_attr($_POST["contact_address"]);
+        $contact_city       = esc_attr($_POST["contact_city"]);
+                
+        $facebook_prof      = esc_attr($_POST["facebook_profile"]);
+        $homepage_int       = esc_attr($_POST["slide_interval"]);
         
         update_option("theme_option_email", $contact_email);
         update_option("theme_option_phone", $contact_phone);
+        update_option("theme_option_address", $contact_address);
+        update_option("theme_option_city", $contact_city);
+        
         update_option("theme_option_facebook_prof", $facebook_prof);
         update_option("theme_option_homepage_int", $homepage_int);
     }
