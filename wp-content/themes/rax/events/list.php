@@ -27,6 +27,8 @@ if ( !defined('ABSPATH') ) { die('-1'); }
 			<div class="events-listing-photo">
 	        <?php if ( has_post_thumbnail()) : ?>
 	            <?php the_post_thumbnail('events-listing'); ?>
+			<?php else: ?>
+				<img src="<?php echo site_url(); ?>/wp-content/themes/rax/assets/images/logo-windmill-project.png" width="150" class="attachment-events-listing wp-post-image" alt="The Windmill Project logo" />
 	        <?php endif; ?>
 			</div>
 
@@ -104,6 +106,8 @@ if ( !defined('ABSPATH') ) { die('-1'); }
 			<div class="events-listing-photo">
 	        <?php if ( has_post_thumbnail()) : ?>
 	            <?php the_post_thumbnail('events-listing'); ?>
+			<?php else: ?>
+				<img src="<?php echo site_url(); ?>/wp-content/themes/rax/assets/images/logo-windmill-project.png" width="150" class="attachment-events-listing wp-post-image" alt="The Windmill Project logo" />
 	        <?php endif; ?>
 			</div>
 
