@@ -38,3 +38,5 @@ Template Name: Homepage
     <?php $idx = ($idx % 3) + 1; endwhile; endif; ?>
     <?php endforeach; ?>
 </ul>
+
+<?php get_footer(); ?>
