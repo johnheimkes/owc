@@ -91,7 +91,7 @@ if ( !defined('ABSPATH') ) { die('-1'); }
 <?php endif; ?>
 <div class="event">
 
-	<div class="event-summary"><?php the_content() ?></div>
+	<div class="event-summary entrytext"><?php the_content() ?></div>
 	<div class="event-single-image">
 	<?php
 	if ( function_exists('has_post_thumbnail') && has_post_thumbnail() ) {?>
