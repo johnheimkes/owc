@@ -898,6 +898,10 @@ white-space: nowrap;
     font-weight: 400;
 }
 
+.error-404 {
+    font-size: 72px;
+}
+
 /* Alex's Styles */
 .event {
 	overflow:hidden;
