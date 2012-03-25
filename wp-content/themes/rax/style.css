@@ -206,11 +206,15 @@ body {
 
 .logo {
     background: url(assets/images/logo-windmill-project.png) no-repeat;
-    width: 313px;
-    height: 120px;
     text-indent: -9999px;
     float: left;
     margin-right: 20px;
+}
+
+.logo a {
+    width: 313px;
+    height: 120px;
+    display: block;
 }
 
 .supplemental {
@@ -342,8 +346,9 @@ body {
 
 .carousel-nav li {
     float: left;
-    font-size: 18px;
+    font-size: 40px;
     margin-left: 5px;
+    line-height: .5;
 }
 
 .carousel-nav li:first-child {
@@ -362,6 +367,158 @@ body {
 /* PAGE CONTENT */
 #page-content {
     clear: both;
+}
+
+#page-content h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+#page-content h2 a {
+    text-decoration: none;
+    color: #000000;
+}
+
+/* ---------------------------------------------------------------------
+ User Entered Content
+
+------------------------------------------------------------------------ */
+.entrytext a {
+    font-weight: bold;
+}
+
+.entrytext strong {
+    font-weight: bold;
+}
+
+.entrytext p {
+    margin-bottom: 15px;
+}
+
+.entrytext em {
+    font-style: italic;
+}
+
+.entrytext sup {
+    vertical-align: top;
+}
+
+.entrytext sub {
+    vertical-align: bottom;
+}
+
+.entrytext blockquote {
+    margin: 20px;
+}
+
+.entrytext h1 {
+    font-size: 24px;
+}
+
+.entrytext h2 {
+    font-size: 18px;
+}
+
+.entrytext h3 {
+    font-size: 16px;
+}
+
+.entrytext h4 {
+    font-size: 14px;
+}
+
+.entrytext h5 {
+    font-size: 12px;
+}
+
+.entrytext h6 {
+    font-size: 11px;
+}
+
+.entrytext h1,
+.entrytext h2,
+.entrytext h3,
+.entrytext h4,
+.entrytext h5,
+.entrytext h6,
+.entrytext p {
+    margin: 0 0 14px 0;
+}
+
+
+.entrytext ul {
+    list-style: disc;
+    margin: 0 0 14px 0;
+}
+
+.entrytext ol {
+    list-style: decimal;
+    margin: 0 0 14px 0;
+}
+
+.entrytext ul ul,
+.entrytext ol ol,
+.entrytext ul ol,
+.entrytext ol ul {
+    margin-bottom: 0;
+}
+
+.entrytext li {
+    margin: 0 0 0 28px;
+}
+
+.entrytext blockquote {
+    margin: 0 22px 12px 22px;
+    padding: 12px;
+    background: #f5f3ef;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f3ef), color-stop(100%,#ffffff));
+    background: -webkit-linear-gradient(top, #f5f3ef 0%,#ffffff 100%);
+    background: -moz-linear-gradient(top, #f5f3ef 0%, #ffffff 100%);
+    background: -o-linear-gradient(top, #f5f3ef 0%,#ffffff 100%);
+    background: -ms-linear-gradient(top, #f5f3ef 0%,#ffffff 100%);
+    background: linear-gradient(top, #f5f3ef 0%,#ffffff 100%);
+    font-style: italic;
+}
+
+.entrytext table {
+    margin: 0 0 12px 0;
+    width: 100%;
+}
+
+.entrytext table th {
+    background: #565148;
+    color: #fff;
+    font-weight: bold;
+    text-align: left;
+    text-transform: uppercase;
+    border: 1px solid #d0cec9;
+    vertical-align: middle;
+    padding: 8px;
+}
+
+.entrytext table td {
+    background: #f5f3ef;
+    border: 1px solid #d0cec9;
+    vertical-align: middle;
+    padding: 8px;
+}
+
+.entrytext hr {
+    margin: 0 0 14px 0;
+    background: #cfc7b8;
+    color: #cfc7b8;
+    height: 1px;
+    border: none;
+    line-height: 1px;
+    font-size: 1px;
+}
+
+.media-caption.entrytext {
+    padding-right: 10px;
+    position: relative;
+    top: -1em;
+    font-size: 0.9em;
 }
 
 /*******************************

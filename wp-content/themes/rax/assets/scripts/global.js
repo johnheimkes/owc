@@ -44,7 +44,7 @@ jQuery(function($) {
                slideTimer = setTimeout(function() {
                    var nextIdx = (idx < $nav.length - 1 ? idx + 1 : 0);
                    $nav.eq(nextIdx).find('a').click();
-               }, 2000);
+               }, 7000);
            }
            return false;
        });
