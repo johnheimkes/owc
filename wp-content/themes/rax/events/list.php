@@ -40,7 +40,7 @@ console.log(jQuery('#menu-item-52'));
 
 			<div class="event-content" itemprop="description">
 				<?php if ( tribe_is_new_event_day() && !tribe_is_day() ) : ?>
-					<h5 class="event-day"><?php echo tribe_get_start_date( null, false, 'm/d/Y g:i' ); ?> to <?php echo tribe_get_end_date( null, false, 'g:i' ); ?></h5>
+					<h5 class="event-day"><?php echo tribe_get_start_date( null, false, 'm/d/Y g:i a' ); ?> to <?php echo tribe_get_end_date( null, false, 'g:i a' ); ?></h5>
 				<?php endif; ?>
 				<?php if ( tribe_is_day() && $first ) : $first = false; ?>
 					<h5 class="event-day"><?php echo tribe_event_format_date(strtotime(get_query_var('eventDate')), false); ?></h5>
@@ -122,7 +122,7 @@ console.log(jQuery('#menu-item-52'));
 
 			<div class="event-content" itemprop="description">
 				<?php if ( tribe_is_new_event_day() && !tribe_is_day() ) : ?>
-					<h5 class="event-day"><?php echo tribe_get_start_date( null, false, 'm/d/Y g:i' ); ?> to <?php echo tribe_get_end_date( null, false, 'g:i' ); ?></h5>
+					<h5 class="event-day"><?php echo tribe_get_start_date( null, false, 'm/d/Y g:i a' ); ?> to <?php echo tribe_get_end_date( null, false, 'g:i a' ); ?></h5>
 				<?php endif; ?>
 				<?php if ( tribe_is_day() && $first ) : $first = false; ?>
 					<h5 class="event-day"><?php echo tribe_event_format_date(strtotime(get_query_var('eventDate')), false); ?></h5>
