@@ -229,6 +229,7 @@ body {
     color: #555;
     float: left;
     margin-left: 25px;
+    font-weight: 400;
 }
 
 .supplemental .promo li:first-child {
@@ -259,6 +260,19 @@ body {
 
 #menu-header-main .menu-item a:hover {
     background-color: #357abe;
+}
+
+
+/* CAROUSEL */
+.carousel .slide .image-wrapper {
+    float: left;
+}
+
+.carousel .slide .copy-wrapper {
+    float: left;
+    width: 511px;
+    background: #005aab;
+    color: #ffffff;
 }
 
 /* PAGE CONTENT */
@@ -307,7 +321,7 @@ body {
 ********************************/
 
 .tiles {
-    
+    clear: both;
 }
 
 .tiles > li {

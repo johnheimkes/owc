@@ -8,9 +8,9 @@ Template Name: Homepage
 
 <?php query_posts('post_type=homepage_slider'); ?>
 
-<div class="homepage-sliders">
+<div class="carousel">
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-    <div class="homepage-slider">
+    <div class="slide">
         <div class="image-wrapper"><?php the_post_thumbnail( array(513,345) ); ?></div>
         <div class="copy-wrapper">
             <?php the_content(); ?>
