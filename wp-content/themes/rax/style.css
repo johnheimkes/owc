@@ -373,16 +373,28 @@ body {
 }
 
 .tile-1 .tile-header {
-    background-color: #005aab;
+    background: #005aab;
+}
+
+.tile-1:hover .tile-header {
+    background: #0070d5;
 }
 
 .tile-2 .tile-header {
-    background-color: #ed1c24;
+    background: #ed1c24;
+}
+
+.tile-2:hover .tile-header {
+    background: #f8333a;
 }
 
 .tile-3 .tile-header {
-    background-color: #ffe82c;
+    background: #ffe82c;
     color: #807316;
+}
+
+.tile-3:hover .tile-header {
+    background: #ffee64;
 }
 
 .tile-header > img {
