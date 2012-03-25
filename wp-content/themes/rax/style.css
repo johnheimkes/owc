@@ -264,11 +264,11 @@ body {
 
 
 /* CAROUSEL */
-.carousel .slide .image-wrapper {
+.carousel .slide .slide-image {
     float: left;
 }
 
-.carousel .slide .copy-wrapper {
+.carousel .slide .slide-content {
     float: left;
     height: 345px;
     width: 511px;

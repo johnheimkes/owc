@@ -14,7 +14,6 @@ Template Name: Page
   </div>
  </div>
  <?php endwhile; endif; ?>
- <?php edit_post_link('Edit this entry.', '<p>', '</p>'); ?>
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
