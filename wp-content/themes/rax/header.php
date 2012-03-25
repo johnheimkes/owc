@@ -7,9 +7,10 @@
     <meta http-equiv="imagetoolbar" content="no" />
     <title></title>
     <script>
-        var baseURL   = '<?php echo site_url(); ?>/';
-        var ajaxURL   = '<?php echo admin_url(); ?>admin-ajax.php?action=';
-        var assetsURL = '<?php echo ASSETS_DIR; ?>';
+        var baseURL       = '<?php echo site_url(); ?>/';
+        var ajaxURL       = '<?php echo admin_url(); ?>admin-ajax.php?action=';
+        var assetsURL     = '<?php echo ASSETS_DIR; ?>';
+        var sliderTimeout = <?php echo (int)get_option('theme_option_homepage_int'); ?>;
     </script>
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
     <?php wp_head(); ?>
@@ -20,7 +21,7 @@
 <div id="main-wrapper">
     <section id="header-wrapper group">
         <header id="site-header" class="group">
-            <h1 class="logo"><a href="<?php echo site_url('/') ?>">The Windmill Project</a></h1>
+            <h1 class="logo"><a href="<?php bloginfo('url'); ?>">The Windmill Project</a></h1>
             <div class="supplemental">
                 <ul class="promo">
                     <li>Connecting Families</li>
