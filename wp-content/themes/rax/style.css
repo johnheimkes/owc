@@ -858,6 +858,34 @@ body {
     margin-left: 10px;
 }
 
+/* Events Plugin override */
+
+#tribe-events-calendar-header, .tribe-events-calendar, #tribe-events-content .ical, .events-single #content .ical, a.gmap, .tribe-events-event-list-meta td, .tribe-events-nav, #tribe-events-event-meta, span.back, .eventsListWidget .dig-in, .eventsAdvancedListWidget .dig-in, .gcal-add {
+font-family: "Lato", sans-serif;
+}
+
+#tribe-events-event-meta {
+font-size: 15px;
+}
+
+#tribe-events-event-meta .gmap, .tribe-events-event-meta-desc .gmap {
+color: white;
+font-size: 11px;
+background: #357ABE;
+padding: 1px 4px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+white-space: nowrap;
+}
+
+.tribe-events-event .entry img.attachment-post-thumbnail {
+    display: block;
+    float: right;
+    margin: 0 0 20px 20px;
+    text-align: left;
+}
+
 /* Alex's Styles */
 .event {
 	overflow:hidden;
