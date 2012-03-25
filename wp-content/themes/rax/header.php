@@ -36,4 +36,4 @@
         </header>
     </section>
 
-    <section id="page-content">
+    <section id="page-content" class="group">
