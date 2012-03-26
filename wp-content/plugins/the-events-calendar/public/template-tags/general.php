@@ -210,7 +210,7 @@ if( class_exists( 'TribeEvents' ) ) {
 	 * @since 2.0
 	 */
 	function tribe_events_before_html() {
-		echo apply_filters('tribe_events_before_html', stripslashes(tribe_get_option('spEventsBeforeHTML')));
+		echo apply_filters('tribe_events_before_html', stripslashes(tribe_get_option('tribeEventsBeforeHTML')));
 	}
 
 	/**
@@ -221,7 +221,7 @@ if( class_exists( 'TribeEvents' ) ) {
 	 * @since 2.0
 	 */
 	function tribe_events_after_html() {
-		echo apply_filters('tribe_events_after_html', stripslashes(tribe_get_option('spEventsAfterHTML')));
+		echo apply_filters('tribe_events_after_html', stripslashes(tribe_get_option('tribeEventsAfterHTML')));
 	}
 	
 	/**
@@ -283,6 +283,23 @@ if( class_exists( 'TribeEvents' ) ) {
 			$return = false;
 		}
 		apply_filters('tribe_event_in_category', $return);
+	}
+
+	/**
+	 * Placeholder function that is used for ticketing plugins
+	 * meant to be filtered by such plugins
+	 *
+	 * @author jkudish
+	 * @since 2.1
+	 * @return void
+	 */
+	function tribe_get_ticket_form() {
+		$ticket_form = apply_filters('tribe_get_ticket_form', false);
+		if ($ticket_form && is_string($ticket_form)) {
+			echo $ticket_form;
+		} else {
+			return $ticket_form;
+		}
 	}
 
 }

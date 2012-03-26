@@ -8,10 +8,9 @@
 
 // Don't load directly
 if ( !defined('ABSPATH') ) { die('-1'); }
-
 ?>
 <span class="back"><a href="<?php echo tribe_get_events_link(); ?>"><?php _e('&laquo; Back to Events', 'tribe-events-calendar'); ?></a></span>				
-<?php if (tribe_get_end_date() > time()  ) { ?><small><?php  _e('This event has passed.', 'tribe-events-calendar') ?></small> <?php } ?>
+<?php if (strtotime( tribe_get_end_date(get_the_ID(), false, 'Y-m-d G:i') . get_option('gmt_offset') ) <= time() ) { ?><div class="event-passed"><?php  _e('This event has passed.', 'tribe-events-calendar') ?></div><?php } ?>
 <div id="tribe-events-event-meta" itemscope itemtype="http://schema.org/Event">
 	<dl class="column">
 		<dt class="event-label event-label-name"><?php _e('Event:', 'tribe-events-calendar') ?></dt>
@@ -95,7 +94,7 @@ if ( !defined('ABSPATH') ) { die('-1'); }
 		<?php the_post_thumbnail(); ?>
 	<?php } ?>
 	<div class="summary"><?php the_content() ?></div>
-	<?php if (function_exists('tribe_get_ticket_form')) { tribe_get_ticket_form(); } ?>		
+	<?php if (function_exists('tribe_get_ticket_form') && tribe_get_ticket_form()) { tribe_get_ticket_form(); } ?>		
 </div>
 <?php if( function_exists('tribe_get_single_ical_link') ): ?>
    <a class="ical single" href="<?php echo tribe_get_single_ical_link(); ?>"><?php _e('iCal Import', 'tribe-events-calendar'); ?></a>
