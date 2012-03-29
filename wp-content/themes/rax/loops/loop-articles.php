@@ -1,4 +1,4 @@
-<?php $args = array( 'post_type' => 'post', 'posts_per_page' => 10, 'category_name' => 'articles') ?>
+<?php $args = array( 'post_type' => 'post', 'posts_per_page' => -1, 'category_name' => 'articles', 'orderby' => 'title', 'order' => 'ASC') ?>
 <?php $my_articles_query = new WP_Query( $args );  ?>
 
 <?php while ( $my_articles_query->have_posts() ) : $my_articles_query->the_post(); ?>
