@@ -16,7 +16,7 @@ if ( !class_exists( 'TribeEvents' ) ) {
 		const VENUE_POST_TYPE = 'tribe_venue';
 		const ORGANIZER_POST_TYPE = 'tribe_organizer';
 		const PLUGIN_DOMAIN = 'tribe-events-calendar';
-		const VERSION = '2.0.5';
+		const VERSION = '2.0.6';
 		const FEED_URL = 'http://tri.be/category/products/feed/';
 		const INFO_API_URL = 'http://wpapi.org/api/plugin/the-events-calendar.php';
 		const WP_PLUGIN_URL = 'http://wordpress.org/extend/plugins/the-events-calendar/';
@@ -168,7 +168,6 @@ if ( !class_exists( 'TribeEvents' ) ) {
 			require_once( $this->pluginPath.'public/template-tags/venue.php' );
 			require_once( $this->pluginPath.'public/template-tags/date.php' );
 			require_once( $this->pluginPath.'public/template-tags/link.php' );
-			if (is_admin()) require_once( $this->pluginPath.'public/template-tags/options.php' );
 
 			// Load Advanced Functions
 			require_once( $this->pluginPath.'public/advanced-functions/event.php' );
@@ -219,6 +218,7 @@ if ( !class_exists( 'TribeEvents' ) ) {
 			add_action( 'save_post', array( $this, 'save_venue_data' ), 16, 2 );
 			add_action( 'save_post', array( $this, 'save_organizer_data' ), 16, 2 );
 			add_action( 'save_post', array( $this, 'addToPostAuditTrail' ), 10, 2 );
+			add_action( 'save_post', array( $this, 'publishAssociatedTypes'), 25, 2 );
 			add_action( 'pre_get_posts', array( $this, 'setDate' ));
 			add_action( 'wp', array( $this, 'setDisplay' ));
 			add_action( 'tribe_events_post_errors', array( 'TribeEventsPostException', 'displayMessage' ) );
@@ -230,6 +230,10 @@ if ( !class_exists( 'TribeEvents' ) ) {
 			add_action( "trash_" . TribeEvents::ORGANIZER_POST_TYPE, array($this, 'cleanupPostOrganizers'));
 			add_action( "wp_ajax_tribe_event_validation", array($this,'ajax_form_validate') );
 			add_action( 'tribe_debug', array( $this, 'renderDebug' ), 10, 2 );
+			
+			if( defined('TRIBE_SHOW_EVENT_AUDITING') && TRIBE_SHOW_EVENT_AUDITING )
+				add_action('tribe_events_details_bottom', array($this,'showAuditingData') );
+				
 			// noindex grid view
 			add_action('wp_head', array( $this, 'noindex_months' ) );
 			add_action( 'plugin_row_meta', array( $this, 'addMetaLinks' ), 10, 2 );
@@ -248,7 +252,7 @@ if ( !class_exists( 'TribeEvents' ) ) {
 			add_action( 'admin_notices', array( $this, 'checkAddOnCompatibility' ) );
 		}
 
-		public static function ecpActive( $version = '2.0.5' ) {
+		public static function ecpActive( $version = '2.0.6' ) {
 			return class_exists( 'TribeEventsPro' ) && defined('TribeEventsPro::VERSION') && version_compare( TribeEventsPro::VERSION, $version, '>=');
 		}
 
@@ -312,7 +316,7 @@ if ( !class_exists( 'TribeEvents' ) ) {
 		}
 		
 		public function maybeRenameOptions() {
-			if ( version_compare( get_option('tribe_events_db_version'), '2.0.5', '<' ) ) {
+			if ( version_compare( get_option('tribe_events_db_version'), '2.0.6', '<' ) ) {
 				$option_names = array(
 					'spEventsTemplate' => 'tribeEventsTemplate',
 					'spEventsBeforeHTML' => 'tribeEventsBeforeHTML',
@@ -327,7 +331,7 @@ if ( !class_exists( 'TribeEvents' ) ) {
 					unset( $current_options[$old_option_names[$i]] );
 				}
 				$this->setOptions( wp_parse_args( $new_options, $current_options ) );
-				update_option('tribe_events_db_version', '2.0.5');
+				update_option('tribe_events_db_version', '2.0.6');
 			}
 		}
 		
@@ -605,7 +609,7 @@ if ( !class_exists( 'TribeEvents' ) ) {
 		public function accessibleMonthForm() {
 			if ( isset($_GET['EventJumpToMonth']) && isset($_GET['EventJumpToYear'] )) {
 				$_GET['eventDisplay'] = 'month';
-				$_GET['eventDate'] = $_GET['EventJumpToYear'] . '-' . $_GET['EventJumpToMonth'];
+				$_GET['eventDate'] = intval($_GET['EventJumpToYear']) . '-' . intval($_GET['EventJumpToMonth']);
 			}
 		}
 
@@ -652,144 +656,154 @@ if ( !class_exists( 'TribeEvents' ) ) {
 		
 		private function addCapabilities() {
 			$role = get_role( 'administrator' );
-			$role->add_cap( 'edit_tribe_event' );
-			$role->add_cap( 'read_tribe_event' );
-			$role->add_cap( 'delete_tribe_event' );
-			$role->add_cap( 'delete_tribe_events');
-			$role->add_cap( 'edit_tribe_events' );
-			$role->add_cap( 'edit_others_tribe_events' );
-			$role->add_cap( 'delete_others_tribe_events' );
-			$role->add_cap( 'publish_tribe_events' );
-			$role->add_cap( 'edit_published_tribe_events' );
-			$role->add_cap( 'delete_published_tribe_events' );
-			$role->add_cap( 'delete_private_tribe_events' );
-			$role->add_cap( 'edit_private_tribe_events' );
-			$role->add_cap( 'read_private_tribe_events' );
-		
-			$role->add_cap( 'edit_tribe_venue' );
-			$role->add_cap( 'read_tribe_venue' );
-			$role->add_cap( 'delete_tribe_venue' );
-			$role->add_cap( 'delete_tribe_venues');
-			$role->add_cap( 'edit_tribe_venues' );
-			$role->add_cap( 'edit_others_tribe_venues' );
-			$role->add_cap( 'delete_others_tribe_venues' );
-			$role->add_cap( 'publish_tribe_venues' );
-			$role->add_cap( 'edit_published_tribe_venues' );
-			$role->add_cap( 'delete_published_tribe_venues' );
-			$role->add_cap( 'delete_private_tribe_venues' );
-			$role->add_cap( 'edit_private_tribe_venues' );
-			$role->add_cap( 'read_private_tribe_venues' );
-		
-			$role->add_cap( 'edit_tribe_organizer' );
-			$role->add_cap( 'read_tribe_organizer' );
-			$role->add_cap( 'delete_tribe_organizer' );
-			$role->add_cap( 'delete_tribe_organizers');
-			$role->add_cap( 'edit_tribe_organizers' );
-			$role->add_cap( 'edit_others_tribe_organizers' );
-			$role->add_cap( 'delete_others_tribe_organizers' );
-			$role->add_cap( 'publish_tribe_organizers' );
-			$role->add_cap( 'edit_published_tribe_organizers' );
-			$role->add_cap( 'delete_published_tribe_organizers' );
-			$role->add_cap( 'delete_private_tribe_organizers' );
-			$role->add_cap( 'edit_private_tribe_organizers' );
-			$role->add_cap( 'read_private_tribe_organizers' );
+			if ( $role ) {
+				$role->add_cap( 'edit_tribe_event' );
+				$role->add_cap( 'read_tribe_event' );
+				$role->add_cap( 'delete_tribe_event' );
+				$role->add_cap( 'delete_tribe_events');
+				$role->add_cap( 'edit_tribe_events' );
+				$role->add_cap( 'edit_others_tribe_events' );
+				$role->add_cap( 'delete_others_tribe_events' );
+				$role->add_cap( 'publish_tribe_events' );
+				$role->add_cap( 'edit_published_tribe_events' );
+				$role->add_cap( 'delete_published_tribe_events' );
+				$role->add_cap( 'delete_private_tribe_events' );
+				$role->add_cap( 'edit_private_tribe_events' );
+				$role->add_cap( 'read_private_tribe_events' );
+			
+				$role->add_cap( 'edit_tribe_venue' );
+				$role->add_cap( 'read_tribe_venue' );
+				$role->add_cap( 'delete_tribe_venue' );
+				$role->add_cap( 'delete_tribe_venues');
+				$role->add_cap( 'edit_tribe_venues' );
+				$role->add_cap( 'edit_others_tribe_venues' );
+				$role->add_cap( 'delete_others_tribe_venues' );
+				$role->add_cap( 'publish_tribe_venues' );
+				$role->add_cap( 'edit_published_tribe_venues' );
+				$role->add_cap( 'delete_published_tribe_venues' );
+				$role->add_cap( 'delete_private_tribe_venues' );
+				$role->add_cap( 'edit_private_tribe_venues' );
+				$role->add_cap( 'read_private_tribe_venues' );
+			
+				$role->add_cap( 'edit_tribe_organizer' );
+				$role->add_cap( 'read_tribe_organizer' );
+				$role->add_cap( 'delete_tribe_organizer' );
+				$role->add_cap( 'delete_tribe_organizers');
+				$role->add_cap( 'edit_tribe_organizers' );
+				$role->add_cap( 'edit_others_tribe_organizers' );
+				$role->add_cap( 'delete_others_tribe_organizers' );
+				$role->add_cap( 'publish_tribe_organizers' );
+				$role->add_cap( 'edit_published_tribe_organizers' );
+				$role->add_cap( 'delete_published_tribe_organizers' );
+				$role->add_cap( 'delete_private_tribe_organizers' );
+				$role->add_cap( 'edit_private_tribe_organizers' );
+				$role->add_cap( 'read_private_tribe_organizers' );
+			}
 			 
 			$editor = get_role( 'editor' );
-			$editor->add_cap( 'edit_tribe_event' );
-			$editor->add_cap( 'read_tribe_event' );
-			$editor->add_cap( 'delete_tribe_event' );
-			$editor->add_cap( 'delete_tribe_events');
-			$editor->add_cap( 'edit_tribe_events' );
-			$editor->add_cap( 'edit_others_tribe_events' );
-			$editor->add_cap( 'delete_others_tribe_events' );
-			$editor->add_cap( 'publish_tribe_events' );
-			$editor->add_cap( 'edit_published_tribe_events' );
-			$editor->add_cap( 'delete_published_tribe_events' );
-			$editor->add_cap( 'delete_private_tribe_events' );
-			$editor->add_cap( 'edit_private_tribe_events' );
-			$editor->add_cap( 'read_private_tribe_events' );
-		
-			$editor->add_cap( 'edit_tribe_venue' );
-			$editor->add_cap( 'read_tribe_venue' );
-			$editor->add_cap( 'delete_tribe_venue' );
-			$editor->add_cap( 'delete_tribe_venues');
-			$editor->add_cap( 'edit_tribe_venues' );
-			$editor->add_cap( 'edit_others_tribe_venues' );
-			$editor->add_cap( 'delete_others_tribe_venues' );
-			$editor->add_cap( 'publish_tribe_venues' );
-			$editor->add_cap( 'edit_published_tribe_venues' );
-			$editor->add_cap( 'delete_published_tribe_venues' );
-			$editor->add_cap( 'delete_private_tribe_venues' );
-			$editor->add_cap( 'edit_private_tribe_venues' );
-			$editor->add_cap( 'read_private_tribe_venues' );
-		
-			$editor->add_cap( 'edit_tribe_organizer' );
-			$editor->add_cap( 'read_tribe_organizer' );
-			$editor->add_cap( 'delete_tribe_organizer' );
-			$editor->add_cap( 'delete_tribe_organizers');
-			$editor->add_cap( 'edit_tribe_organizers' );
-			$editor->add_cap( 'edit_others_tribe_organizers' );
-			$editor->add_cap( 'delete_others_tribe_organizers' );
-			$editor->add_cap( 'publish_tribe_organizers' );
-			$editor->add_cap( 'edit_published_tribe_organizers' );
-			$editor->add_cap( 'delete_published_tribe_organizers' );
-			$editor->add_cap( 'delete_private_tribe_organizers' );
-			$editor->add_cap( 'edit_private_tribe_organizers' );
-			$editor->add_cap( 'read_private_tribe_organizers' );
-			 
+			if ( $editor ) {
+				$editor->add_cap( 'edit_tribe_event' );
+				$editor->add_cap( 'read_tribe_event' );
+				$editor->add_cap( 'delete_tribe_event' );
+				$editor->add_cap( 'delete_tribe_events');
+				$editor->add_cap( 'edit_tribe_events' );
+				$editor->add_cap( 'edit_others_tribe_events' );
+				$editor->add_cap( 'delete_others_tribe_events' );
+				$editor->add_cap( 'publish_tribe_events' );
+				$editor->add_cap( 'edit_published_tribe_events' );
+				$editor->add_cap( 'delete_published_tribe_events' );
+				$editor->add_cap( 'delete_private_tribe_events' );
+				$editor->add_cap( 'edit_private_tribe_events' );
+				$editor->add_cap( 'read_private_tribe_events' );
+			
+				$editor->add_cap( 'edit_tribe_venue' );
+				$editor->add_cap( 'read_tribe_venue' );
+				$editor->add_cap( 'delete_tribe_venue' );
+				$editor->add_cap( 'delete_tribe_venues');
+				$editor->add_cap( 'edit_tribe_venues' );
+				$editor->add_cap( 'edit_others_tribe_venues' );
+				$editor->add_cap( 'delete_others_tribe_venues' );
+				$editor->add_cap( 'publish_tribe_venues' );
+				$editor->add_cap( 'edit_published_tribe_venues' );
+				$editor->add_cap( 'delete_published_tribe_venues' );
+				$editor->add_cap( 'delete_private_tribe_venues' );
+				$editor->add_cap( 'edit_private_tribe_venues' );
+				$editor->add_cap( 'read_private_tribe_venues' );
+			
+				$editor->add_cap( 'edit_tribe_organizer' );
+				$editor->add_cap( 'read_tribe_organizer' );
+				$editor->add_cap( 'delete_tribe_organizer' );
+				$editor->add_cap( 'delete_tribe_organizers');
+				$editor->add_cap( 'edit_tribe_organizers' );
+				$editor->add_cap( 'edit_others_tribe_organizers' );
+				$editor->add_cap( 'delete_others_tribe_organizers' );
+				$editor->add_cap( 'publish_tribe_organizers' );
+				$editor->add_cap( 'edit_published_tribe_organizers' );
+				$editor->add_cap( 'delete_published_tribe_organizers' );
+				$editor->add_cap( 'delete_private_tribe_organizers' );
+				$editor->add_cap( 'edit_private_tribe_organizers' );
+				$editor->add_cap( 'read_private_tribe_organizers' );
+			}
+			
 			$author = get_role( 'author' );
-			$author->add_cap( 'edit_tribe_event' );
-			$author->add_cap( 'read_tribe_event' );
-			$author->add_cap( 'delete_tribe_event' );
-			$author->add_cap( 'delete_tribe_events' );
-			$author->add_cap( 'edit_tribe_events' );
-			$author->add_cap( 'publish_tribe_events' );
-			$author->add_cap( 'edit_published_tribe_events' );
-			$author->add_cap( 'delete_published_tribe_events' );
-			
-			$author->add_cap( 'edit_tribe_venue' );
-			$author->add_cap( 'read_tribe_venue' );
-			$author->add_cap( 'delete_tribe_venue' );
-			$author->add_cap( 'delete_tribe_venues' );
-			$author->add_cap( 'edit_tribe_venues' );
-			$author->add_cap( 'publish_tribe_venues' );
-			$author->add_cap( 'edit_published_tribe_venues' );
-			$author->add_cap( 'delete_published_tribe_venues' );
-			
-			$author->add_cap( 'edit_tribe_organizer' );
-			$author->add_cap( 'read_tribe_organizer' );
-			$author->add_cap( 'delete_tribe_organizer' );
-			$author->add_cap( 'delete_tribe_organizers' );
-			$author->add_cap( 'edit_tribe_organizers' );
-			$author->add_cap( 'publish_tribe_organizers' );
-			$author->add_cap( 'edit_published_tribe_organizers' );
-			$author->add_cap( 'delete_published_tribe_organizers' );
+			if ( $author ) {		 
+				$author->add_cap( 'edit_tribe_event' );
+				$author->add_cap( 'read_tribe_event' );
+				$author->add_cap( 'delete_tribe_event' );
+				$author->add_cap( 'delete_tribe_events' );
+				$author->add_cap( 'edit_tribe_events' );
+				$author->add_cap( 'publish_tribe_events' );
+				$author->add_cap( 'edit_published_tribe_events' );
+				$author->add_cap( 'delete_published_tribe_events' );
+				
+				$author->add_cap( 'edit_tribe_venue' );
+				$author->add_cap( 'read_tribe_venue' );
+				$author->add_cap( 'delete_tribe_venue' );
+				$author->add_cap( 'delete_tribe_venues' );
+				$author->add_cap( 'edit_tribe_venues' );
+				$author->add_cap( 'publish_tribe_venues' );
+				$author->add_cap( 'edit_published_tribe_venues' );
+				$author->add_cap( 'delete_published_tribe_venues' );
+				
+				$author->add_cap( 'edit_tribe_organizer' );
+				$author->add_cap( 'read_tribe_organizer' );
+				$author->add_cap( 'delete_tribe_organizer' );
+				$author->add_cap( 'delete_tribe_organizers' );
+				$author->add_cap( 'edit_tribe_organizers' );
+				$author->add_cap( 'publish_tribe_organizers' );
+				$author->add_cap( 'edit_published_tribe_organizers' );
+				$author->add_cap( 'delete_published_tribe_organizers' );
+			}
 			
 			$contributor = get_role( 'contributor' );
-			$contributor->add_cap( 'edit_tribe_event' );
-			$contributor->add_cap( 'read_tribe_event' );
-			$contributor->add_cap( 'delete_tribe_event' );
-			$contributor->add_cap( 'delete_tribe_events' );
-			$contributor->add_cap( 'edit_tribe_events' );
-			
-			$contributor->add_cap( 'edit_tribe_venue' );
-			$contributor->add_cap( 'read_tribe_venue' );
-			$contributor->add_cap( 'delete_tribe_venue' );
-			$contributor->add_cap( 'delete_tribe_venues' );
-			$contributor->add_cap( 'edit_tribe_venues');
-			
-			$contributor->add_cap( 'edit_tribe_organizer' );
-			$contributor->add_cap( 'read_tribe_organizer' );
-			$contributor->add_cap( 'delete_tribe_organizer' );
-			$contributor->add_cap( 'delete_tribe_organizers' );
-			$contributor->add_cap( 'edit_tribe_organizers' );
+			if ( $contributor ) {
+				$contributor->add_cap( 'edit_tribe_event' );
+				$contributor->add_cap( 'read_tribe_event' );
+				$contributor->add_cap( 'delete_tribe_event' );
+				$contributor->add_cap( 'delete_tribe_events' );
+				$contributor->add_cap( 'edit_tribe_events' );
 				
-			$subscriber = get_role( 'subscriber' );
-			$subscriber->add_cap( 'read_tribe_event' );
+				$contributor->add_cap( 'edit_tribe_venue' );
+				$contributor->add_cap( 'read_tribe_venue' );
+				$contributor->add_cap( 'delete_tribe_venue' );
+				$contributor->add_cap( 'delete_tribe_venues' );
+				$contributor->add_cap( 'edit_tribe_venues');
+				
+				$contributor->add_cap( 'edit_tribe_organizer' );
+				$contributor->add_cap( 'read_tribe_organizer' );
+				$contributor->add_cap( 'delete_tribe_organizer' );
+				$contributor->add_cap( 'delete_tribe_organizers' );
+				$contributor->add_cap( 'edit_tribe_organizers' );
+			}
 			
-			$subscriber->add_cap( 'read_tribe_organizer' );
-
-			$subscriber->add_cap( 'read_tribe_venue' );
+			$subscriber = get_role( 'subscriber' );
+			if ( $subscriber ) {
+				$subscriber->add_cap( 'read_tribe_event' );
+				
+				$subscriber->add_cap( 'read_tribe_organizer' );
+	
+				$subscriber->add_cap( 'read_tribe_venue' );
+			}
 		}
 
 		public function registerPostType() {
@@ -1689,10 +1703,10 @@ if ( !class_exists( 'TribeEvents' ) ) {
 			 * editing the venue/organizer from within the event.
 			 */
 			if( isset($_POST['Venue']['VenueID']) && !empty($_POST['Venue']['VenueID']) && class_exists('TribeEventsPro') )
-				$_POST['Venue'] = array('VenueID' => $_POST['Venue']['VenueID']);
+				$_POST['Venue'] = array('VenueID' => intval($_POST['Venue']['VenueID']));
 
 			if( isset($_POST['Organizer']['OrganizerID']) && !empty($_POST['Organizer']['OrganizerID']) && class_exists('TribeEventsPro') )
-				$_POST['Organizer'] = array('OrganizerID' => $_POST['Organizer']['OrganizerID']);
+				$_POST['Organizer'] = array('OrganizerID' => intval($_POST['Organizer']['OrganizerID']));
 
 
 			TribeEventsAPI::saveEventMeta($postId, $_POST, $post);
@@ -1719,8 +1733,21 @@ if ( !class_exists( 'TribeEvents' ) ) {
 				} else {
 					return;
 				}
-				update_post_meta( $postId, $post_type . 'Origin', apply_filters( 'post-origin', 'events-calendar' ) );
+				
+				//only set origin once
+				$origin = get_post_meta($postId , $post_type . 'Origin', true);
+				if( !$origin )
+					update_post_meta( $postId, $post_type . 'Origin', apply_filters( 'post-origin', 'events-calendar' ) );
+				
 			}
+		}
+
+		public function showAuditingData(){
+
+			$events_audit_trail_template = $this->pluginPath . 'admin-views/events-audit-trail.php';
+			$events_audit_trail_template = apply_filters('tribe_events_audit_trail_template', $events_audit_trail_template);
+			include( $events_audit_trail_template );
+		
 		}
 
 		/**
@@ -1753,7 +1780,84 @@ if ( !class_exists( 'TribeEvents' ) ) {
 			}
 		}
 
-		//** If you are saving a new venu separate from an event
+		/**
+		 * Publishes associated venue/organizer when an event is published
+		 *
+		 * @since 2.0.6
+		 * @author nciske
+		 * @param int $postId, the post ID
+		 * @param stdClass $post, the post object
+		 * @return void
+		 */
+		public function publishAssociatedTypes( $postID, $post ) {
+			
+			remove_action( 'save_post', array( $this, 'addEventMeta' ), 15, 2 );
+			remove_action( 'save_post', array( $this, 'save_venue_data' ), 16, 2 );
+			remove_action( 'save_post', array( $this, 'save_organizer_data' ), 16, 2 );
+			remove_action( 'save_post', array( $this, 'addToPostAuditTrail' ), 10, 2 );
+
+			remove_action( 'save_post', array( $this, 'publishAssociatedTypes'), 25, 2 );
+			
+			// Only continue if the post being published is an event
+			if ( wp_is_post_autosave( $postID ) || $post->post_status == 'auto-draft' ||
+						isset($_GET['bulk_edit']) || (isset($_REQUEST['action']) && $_REQUEST['action'] == 'inline-save') || 
+						($post->post_type != self::POSTTYPE && $postID)) {
+				return;
+			}
+				
+				//echo '$postID='.$postID;
+				
+				global $wpdb;
+				
+				if( isset( $post->post_status ) && $post->post_status == 'publish' ){
+				
+					//get venue and organizer and publish them
+
+					$pm = get_post_custom($post->ID);
+					
+					if( isset($pm['_EventVenueID']) && $pm['_EventVenueID'] ){
+						
+						if( is_array($pm['_EventVenueID']) ){
+							$venue_id = current($pm['_EventVenueID']);
+						}else{
+							$venue_id = $pm['_EventVenueID'];
+						}
+						
+						
+						$venue_post = array(
+							'ID' => $venue_id, 
+							'post_status' => 'publish',
+						);
+						
+						//wp_update_post( $venue_post );
+						$sql = "UPDATE $wpdb->posts SET post_status = 'publish' WHERE ID = '".intval($venue_id)."' AND post_type = '".TribeEvents::VENUE_POST_TYPE."' AND post_status != 'publish'";
+						$wpdb->query($sql);
+						
+					}
+	
+					if( isset($pm['_EventOrganizerID']) && $pm['_EventOrganizerID'] ){
+						
+						if( is_array($pm['_EventOrganizerID']) ){
+							$org_id = current($pm['_EventOrganizerID']);
+						}else{
+							$org_id = $pm['_EventOrganizerID'];
+						}
+						
+
+						$org_post = array(
+							'ID' => $org_id, 
+							'post_status' => 'publish',
+						);
+
+						//wp_update_post( $org_post );
+						$sql = "UPDATE $wpdb->posts SET post_status = 'publish' WHERE ID = '".intval($org_id)."' AND post_type = '".TribeEvents::ORGANIZER_POST_TYPE."' AND post_status != 'publish'";
+						$wpdb->query($sql);
+					}
+				}
+				
+		}
+
+		//** If you are saving a new venue separate from an event
 		public function save_venue_data( $postID = null, $post=null ) {
 			global $_POST;
 
@@ -1783,8 +1887,8 @@ if ( !class_exists( 'TribeEvents' ) ) {
 			return $venue_id;
 		}
 
-		function get_venue_info($p = null){
-			$r = new WP_Query(array('post_type' => self::VENUE_POST_TYPE, 'nopaging' => 1, 'post_status' => 'publish', 'ignore_sticky_posts ' => 1,'orderby'=>'title', 'order'=>'ASC','p' => $p));
+		function get_venue_info($p = null, $post_status='publish'){
+			$r = new WP_Query(array('post_type' => self::VENUE_POST_TYPE, 'nopaging' => 1, 'post_status' => $post_status, 'ignore_sticky_posts ' => 1,'orderby'=>'title', 'order'=>'ASC','p' => $p));
 			if ($r->have_posts()) :
 				return $r->posts;
 			endif;
@@ -1794,7 +1898,7 @@ if ( !class_exists( 'TribeEvents' ) ) {
 		//** If you are saving a new organizer along with the event, we will do this:
 		public function save_organizer_data( $postID = null, $post=null ) {
 			global $_POST;
-
+			
 			// don't do anything on autosave or auto-draft either or massupdates
 			// Or inline saves, or data being posted without a organizer Or
 			// finally, called from the save_post action, but on save_posts that
@@ -1862,8 +1966,8 @@ if ( !class_exists( 'TribeEvents' ) ) {
 			}
 		}
 
-		function get_organizer_info($p = null){
-			$r = new WP_Query(array('post_type' => self::ORGANIZER_POST_TYPE, 'nopaging' => 1, 'post_status' => 'publish', 'ignore_sticky_posts ' => 1,'orderby'=>'title', 'order'=>'ASC', 'p' => $p));
+		function get_organizer_info($p = null, $post_status='publish'){
+			$r = new WP_Query(array('post_type' => self::ORGANIZER_POST_TYPE, 'nopaging' => 1, 'post_status' => $post_status, 'ignore_sticky_posts ' => 1,'orderby'=>'title', 'order'=>'ASC', 'p' => $p));
 			if ($r->have_posts()) :
 				return $r->posts;
 			endif;
@@ -1898,7 +2002,12 @@ if ( !class_exists( 'TribeEvents' ) ) {
 			
 			$options = '';
 			$style = '';
-			$postId = $post->ID;
+			
+			if(isset($post->ID)){
+				$postId = $post->ID;
+			}else{
+				$postId = 0;
+			}
 			
 				foreach ( $this->metaTags as $tag ) {
 					if ( $postId && $saved ) { //if there is a post AND the post has been saved at least once.
@@ -1913,7 +2022,7 @@ if ( !class_exists( 'TribeEvents' ) ) {
 						
 						//allow posted data to override default data
 						if( isset($_POST['Event'.$cleaned_tag]) ){
-							$$tag = $_POST['Event'.$cleaned_tag];
+							$$tag = stripslashes_deep($_POST['Event'.$cleaned_tag]);
 						}else{
 							$$tag = (class_exists('TribeEventsPro') && $this->defaultValueReplaceEnabled() ) ? tribe_get_option('eventsDefault'.$cleaned_tag) : "";
 						}
@@ -1928,7 +2037,7 @@ if ( !class_exists( 'TribeEvents' ) ) {
 				foreach($this->organizerTags as $tag) {
 					$cleaned_tag = str_replace('_Organizer','',$tag);
 					if( isset($_POST['organizer'][$cleaned_tag]) )
-						$$tag = $_POST['organizer'][$cleaned_tag];
+						$$tag = stripslashes_deep($_POST['organizer'][$cleaned_tag]);
 				}
 			}
 
@@ -1957,7 +2066,7 @@ if ( !class_exists( 'TribeEvents' ) ) {
 					}
 
 					if( isset($_POST['venue'][$cleaned_tag]) )
-						$$var_name = $_POST['venue'][$cleaned_tag];
+						$$var_name = stripslashes_deep($_POST['venue'][$cleaned_tag]);
 
 				}
 
@@ -1971,9 +2080,9 @@ if ( !class_exists( 'TribeEvents' ) ) {
 				
 				if( isset($_POST['venue']['Country']) ){
 					if( $_POST['venue']['Country'] == 'United States' ){
-						$_VenueStateProvince = $_POST['venue']['State'];
+						$_VenueStateProvince = stripslashes_deep($_POST['venue']['State']);
 					}else{
-						$_VenueStateProvince = $_POST['venue']['Province'];
+						$_VenueStateProvince = stripslashes_deep($_POST['venue']['Province']);
 					}
 				}
 
@@ -2042,11 +2151,11 @@ if ( !class_exists( 'TribeEvents' ) ) {
 
 			if($post->post_type == self::VENUE_POST_TYPE){
 			
-				if( (is_admin() && isset($_GET['post']) && $_GET['post']) || (!is_admin() && isset($_GET['tribe_venue_id']) && $_GET['tribe_venue_id']) )
+				if( (is_admin() && isset($_GET['post']) && $_GET['post']) || (!is_admin() && isset($postId) ) )
 					$saved = true;
 			
 				foreach ( $this->venueTags as $tag ) {
-					if ( $postId && $saved ) { //if there is a post AND the post has been saved at least once.
+					if ( $postId && isset( $saved ) && $saved ) { //if there is a post AND the post has been saved at least once.
 						$$tag = esc_html(get_post_meta( $postId, $tag, true ));
 					} else {
 						$cleaned_tag = str_replace('_Venue','',$tag);
@@ -2081,10 +2190,10 @@ if ( !class_exists( 'TribeEvents' ) ) {
 			$style = '';
 			$postId = $post->ID;
 			$saved = false;
-
+			
 			if($post->post_type == self::ORGANIZER_POST_TYPE){
 
-				if( (is_admin() && isset($_GET['post']) && $_GET['post']) || (!is_admin() && isset($_GET['tribe_organizer_id']) && $_GET['tribe_organizer_id']) )
+				if( (is_admin() && isset($_GET['post']) && $_GET['post']) || (!is_admin() && isset($postId) ))
 					$saved = true;
 			
 				foreach ( $this->organizerTags as $tag ) {

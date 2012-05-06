@@ -5,7 +5,7 @@ Tags: modern tribe, tribe, widget, events, tooltips, grid, month, list, calendar
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QA7QZM4CNQ342
 Requires at least: 3.1
 Tested up to: 3.4-alpha
-Stable tag: 2.0.5
+Stable tag: 2.0.6
 
 == Description ==
 
@@ -13,7 +13,7 @@ IMPORTANT NOTICE: If you are upgrading from a pre-2.0 version of The Events Cale
 
 The Events Calendar plugin enables you to rapidly create and manage events. Features include Google Maps integration as well as default templates such as a calendar grid and event list, widget and so much more. Looking for recurring events, the ability to sell tickets, manage conference schedules, accept user submitted events automatically and more? Check out the <a href="http://tri.be/products/?ref=tec-readme">available premium and community add-ons</a>. Have questions or looking to get help from our active user community, <a href="https://www.facebook.com/ModernTribeInc">join us on Facebook</a>, sign up for our newsletter (bottom of the home page) or check out <a href="http://tri.be/support/?ref=tec-readme">our support page</a>. Please note that while we are actively supporting this plugin, we don't provide support for non-paying users.
 
-Just getting started? Check out our <a href="http://tri.be/support/documentation/events-calendar-pro-new-user-primer/?ref=tec-readme">new user primer!</a>
+Just getting started? Check out our <a href="http://tri.be/new-user-primers/?ref=tec-readme">new user primer!</a>
 
 = The Events Calendar 2.0 =
 
@@ -134,6 +134,20 @@ Our Premium Plugins:
 
 
 == Changelog ==
+
+= 2.0.6 =
+
+**Small features, UX and Content Tweaks:**
+
+* Adjusted the Settings API so it now saves on page load and then redirects back to the page
+* add_cap()s are now wrapped in an if-statement
+* Added proper indentation and spacing to the Events Calendar PRO source files
+
+**Bug Fixes:**
+
+* Additional fields no longer wiped when saving changes to events/settings pages
+* Plugin now removes newlines and carriage returns in the process of saving line-separated options for custom links
+* Reviewed/improved $_POST and $_GET variables after a security audit to make sure they're sanitized before output/saving to the database (to prevent mySQL injects and/or cross-site scripting vulnerabilities)
 
 = 2.0.5 =
 
