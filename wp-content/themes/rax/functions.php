@@ -23,6 +23,46 @@ function add_excerpt_to_pages()
     add_post_type_support( 'page', 'excerpt' );
 }
 
+add_action('admin_menu', 'remove_admin_menus');
+function remove_admin_menus () {
+    global $menu;
+    $restricted = array(__('Posts'));
+    end ($menu);
+    while (prev($menu)){
+        $value = explode(' ',$menu[key($menu)][0]);
+        if(in_array($value[0] != NULL?$value[0]:"" , $restricted)){unset($menu[key($menu)]);}
+    }
+}
+
+
+
+add_action( 'init', 'create_articles');
+function create_articles() {
+    register_post_type( 'article',
+        array(
+            'labels' => array(
+                'name' => __( 'Articles' ),
+                'singular_name' => __( 'Article' ),
+                'add_new' => __( 'Add New' ),
+                'add_new_item' => __( 'Add New Article' ),
+                'edit' => __( 'Edit' ),
+                'edit_item' => __( 'Edit Article' ),
+                'new_item' => __( 'New Article' ),
+            ),
+            'public' => true,
+            'menu_position' => 4,
+            'supports' => array(
+                'title',
+                'editor',
+                'thumbnail',
+                'revisions',
+                'page-attributes'
+            ),
+            'has_archive' => false,
+        )
+    );
+}
+
 add_action( 'init', 'create_homepage_sliders' );
 function create_homepage_sliders() {
     register_post_type( 'homepage_slider',
@@ -67,7 +107,8 @@ function create_faqs() {
                     'title',
                     'editor',
                     'thumbnail',
-                    'revisions'
+                    'revisions',
+                    'page-attributes'
                 ),
             'has_archive' => false,
             'rewrite' => array('slug' => 'faqs')
@@ -120,7 +161,8 @@ function create_family_stories() {
                     'excerpt',
                     'editor',
                     'thumbnail',
-                    'revisions'
+                    'revisions',
+                    'page-attributes'
                 ),
             'has_archive' => false,
             'rewrite' => array('slug' => 'family-stories')

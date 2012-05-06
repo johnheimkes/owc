@@ -1,4 +1,4 @@
-<?php $args = array( 'post_type' => 'windmill_quotes', 'posts_per_page' => 1, 'orderby' => 'rand') ?>
+<?php $args = array( 'post_type' => 'windmill_quotes', 'posts_per_page' => 1, 'orderby' => 'post_date', 'order' => 'DESC') ?>
 <?php $my_quote_query = new WP_Query( $args );  ?>
 
 <?php while ( $my_quote_query->have_posts() ) : $my_quote_query->the_post(); ?>

@@ -30,6 +30,8 @@ Template Name: Homepage
     </ul>
 </div>
 
+<?php echo do_shortcode('[quote]'); ?>
+
 <ul class="tiles">
     <?php $idx=1; foreach(array('about-us', 'events', 'stories', 'contact-us') as $name): ?>
     <?php rewind_posts(); ?>

@@ -1,4 +1,4 @@
-<?php $args = array( 'post_type' => 'faqs' ) ?>
+<?php $args = array( 'post_type' => 'faqs', 'orderby' => 'menu_order', 'order' => 'ASC' ) ?>
 <?php $my_faqs_query = new WP_Query( $args );  ?>
 
 <?php while ( $my_faqs_query->have_posts() ) : $my_faqs_query->the_post(); ?>
