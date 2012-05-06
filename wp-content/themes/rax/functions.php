@@ -55,8 +55,7 @@ function create_articles() {
                 'title',
                 'editor',
                 'thumbnail',
-                'revisions',
-                'page-attributes'
+                'revisions'
             ),
             'has_archive' => false,
         )
@@ -107,8 +106,7 @@ function create_faqs() {
                     'title',
                     'editor',
                     'thumbnail',
-                    'revisions',
-                    'page-attributes'
+                    'revisions'
                 ),
             'has_archive' => false,
             'rewrite' => array('slug' => 'faqs')
@@ -161,8 +159,7 @@ function create_family_stories() {
                     'excerpt',
                     'editor',
                     'thumbnail',
-                    'revisions',
-                    'page-attributes'
+                    'revisions'
                 ),
             'has_archive' => false,
             'rewrite' => array('slug' => 'family-stories')

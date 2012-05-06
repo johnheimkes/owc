@@ -1,4 +1,4 @@
-<?php $args = array( 'post_type' => 'family_stories', 'posts_per_page' => -1, 'orderby' => 'menu_order', 'order' => 'ASC') ?>
+<?php $args = array( 'post_type' => 'family_stories', 'posts_per_page' => -1, 'orderby' => 'title', 'order' => 'ASC') ?>
 <?php $my_theme_query = new WP_Query( $args ); 
 
 while ( $my_theme_query->have_posts() ) : $my_theme_query->the_post(); ?>

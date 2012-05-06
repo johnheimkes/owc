@@ -1,4 +1,4 @@
-<?php $args = array( 'post_type' => 'article', 'posts_per_page' => -1, 'orderby' => 'menu_order', 'order' => 'ASC') ?>
+<?php $args = array( 'post_type' => 'article', 'posts_per_page' => -1, 'orderby' => 'title', 'order' => 'ASC') ?>
 <?php $my_articles_query = new WP_Query( $args );  ?>
 
 <?php while ( $my_articles_query->have_posts() ) : $my_articles_query->the_post(); ?>
